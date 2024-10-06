@@ -1,0 +1,98 @@
+{
+  "users": {
+    "u1": {
+      "id": "u1",
+      "lastName": "Doe",
+      "firstName": "John",
+      "email": "u1@example.com",
+      "role": "admin",
+      "isBlocked": false,
+      "profileUrl": "https://example.com/u1"
+    }
+  },
+  "classes": {
+    "c1": {
+      "id": "c1",
+      "name": "Class 1",
+      "studentIds": [
+        "s1"
+      ]
+    }
+  },
+  "subjects": {
+    "s1": {
+      "id": "s1",
+      "name": "Math",
+      "classId": "c1",
+      "daysOfWeek": [
+        "monday",
+        "wednesday",
+        "friday"
+      ],
+      "teacherId": "t1"
+    }
+  },
+  "teachers": {
+    "t1": {
+      "id": "t1",
+      "lastName": "Doe",
+      "firstName": "John",
+      "address": "123 Main St, Springfield, IL 62701",
+      "email": "t1@example.com",
+      "gender": "male",
+      "phone": "217-555-1234",
+      "profileUrl": "https://example.com/t1",
+      "admissionDate": "2010-01-01"
+    }
+  },
+  "parents": {
+    "p1": {
+      "id": "p1",
+      "lastName": "Doe",
+      "firstName": "John",
+      "address": "123 Main St, Springfield, IL 62701",
+      "email": "p1@example.com",
+      "phone": "217-555-1234",
+      "profileUrl": "https://example.com/p1"
+    },
+    "p2": {
+      "id": "p2",
+      "lastName": "Doe",
+      "firstName": "Jane",
+      "address": "123 Main St, Springfield, IL 62701",
+      "email": "p2@example.com",
+      "phone": "217-555-1234",
+      "profileUrl": "https://example.com/p2"
+    },
+    "s1728130260760": {
+      "id": "s1728130260760",
+      "lastName": "Do 3e",
+      "firstName": "John",
+      "address": "123 Main St, Springfield, IL 62701",
+      "email": "p1@example.com",
+      "phone": "217-555-1234",
+      "profileUrl": "https://example.com/p1"
+    }
+  },
+  "students": {
+    "s1": {
+      "id": "s1",
+      "lastName": "Doe",
+      "firstName": "Jane",
+      "address": "123 Main St, Springfield, IL 62701",
+      "email": "s1@example.com",
+      "profileUrl": "https://example.com/s1",
+      "gender": "male",
+      "dateOfBirth": "2005-01-01",
+      "classIds": [
+        "c1"
+      ],
+      "parentIds": [
+        "p1",
+        "p2"
+      ],
+      "admissionDate": "2010-01-01",
+      "phone": "217-555-1234"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "school-management-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "nodemon ./src/main.ts",
+    "client:gen": "api generate-client --calls ./src/calls.ts --output ../web/src/client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node-lts": "^18.12.5",
+    "@types/eventsource": "^1.1.12",
+    "@types/node": "^20.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "@anthropic-ai/sdk": "^0.19.0",
+    "@aws-sdk/client-polly": "^3.427.0",
+    "@deepgram/sdk": "^3.2.0",
+    "@google-cloud/text-to-speech": "^5.0.1",
+    "@jasonai/api": "^0.0.9",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "eventsource": "^2.0.2",
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.0.1",
+    "openai": "^4.12.1",
+    "replicate": "^0.20.0",
+    "save-dev": "^0.0.1-security",
+    "unrealspeech": "^1.8.6",
+    "zod": "^3.22.4"
+  }
+}
