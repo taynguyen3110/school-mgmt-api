@@ -5,6 +5,7 @@
       "lastName": "Doe",
       "firstName": "John",
       "email": "u1@example.com",
+      "password": "password01",
       "role": "admin",
       "isBlocked": false,
       "profileUrl": "https://example.com/u1"
@@ -63,15 +64,6 @@
       "email": "p2@example.com",
       "phone": "217-555-1234",
       "profileUrl": "https://example.com/p2"
-    },
-    "s1728130260760": {
-      "id": "s1728130260760",
-      "lastName": "Do 3e",
-      "firstName": "John",
-      "address": "123 Main St, Springfield, IL 62701",
-      "email": "p1@example.com",
-      "phone": "217-555-1234",
-      "profileUrl": "https://example.com/p1"
     }
   },
   "students": {

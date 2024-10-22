@@ -1,5 +1,5 @@
 import { dbInstance } from "./db";
-import { ClassType, Parent, StudenFull, Student, Subject, SubjectFull, Teacher } from "./types";
+import { ClassType, ClassTypeFull, Parent, StudenFull, Student, Subject, SubjectFull, Teacher } from "./types";
 
 // ## User
 export const user_login = (username: string, password: string) => {
@@ -31,25 +31,82 @@ export const user_update = (user: any) => {
 }
 
 // ## Class
+const classesFull = (classes: ClassType[]): ClassTypeFull[] => {
+    const students = dbInstance.db.students;
+    return classes.map((classs) => {
+        return {
+            ...classs,
+            students: classs.studentIds.map((studentId) => students[studentId]),
+        }
+    });
+}
+
 export const class_list = (page = 1, rowsPerPage = 10) => {
     const list = dbInstance.db.classes;
     const arr = Object.values(list);
     const result = arr.slice((page - 1) * rowsPerPage, page * rowsPerPage);
     return result;
 }
+export const class_filter = (filter: { name?: string, page?: number, sortBy?: keyof ClassType, order?: 'asc' | 'desc' }, all = false) => {
+    const { name, page, sortBy, order } = filter;
+    const rowsPerPage = 10;
+    const _page = page || 1;
+    const _order = order || 'asc';
+    const list = dbInstance.db.classes;
+    const arr = Object.values(list);
+    let result = arr;
+    if (name) {
+        const nameLower = name.toLowerCase();
+        result = result.filter((c) => c.name.toLowerCase().includes(nameLower));
+    }
+    if (sortBy) {
+        result = result.sort((a, b) => {
+            if (a[sortBy] < b[sortBy]) return -1;
+            if (a[sortBy] > b[sortBy]) return 1;
+            return 0;
+        });
+        // order
+        if (_order === 'desc') {
+            result = result.reverse();
+        }
+    }
+    const totalResult = result.length;
+    if (_page && !all) {
+        result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
+    }
+
+    return {
+        classes: result,
+        total: totalResult,
+        rowsPerPage,
+        page: _page,
+        totalPages: Math.ceil(totalResult / rowsPerPage),
+        filter: { name, page: _page, sortBy, order: _order }
+    };
+}
 
 export const class_by_id = (id: string) => {
-    return dbInstance.db.classes[id];
+    if (!dbInstance.db.classes[id]) return undefined;
+
+    return classesFull([dbInstance.db.classes[id]])[0];
 }
 
 export const class_add = (classs: ClassType) => {
     dbInstance.db.classes[classs.id] = classs;
     dbInstance.write();
+    return dbInstance.db.classes[classs.id];
 }
 
 export const class_update = (classs: ClassType) => {
     dbInstance.db.classes[classs.id] = classs;
     dbInstance.write();
+    return dbInstance.db.classes[classs.id];
+}
+
+export const class_delete = (id: string) => {
+    delete dbInstance.db.classes[id];
+    dbInstance.write();
+    return dbInstance.db.classes[id];
 }
 
 // ## Subject
@@ -71,7 +128,7 @@ const subjectsFull = (subjects: Subject[]): SubjectFull[] => {
     });
 }
 
-export const subject_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Subject, order?: 'asc' | 'desc' }) => {
+export const subject_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Subject, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, order, page, sortBy } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
@@ -99,7 +156,7 @@ export const subject_filter = (filter: { name?: string, classIds?: string[], pag
     }
 
     const totalResult = result.length;
-    if (_page) {
+    if (_page && !all) {
         result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
     }
     return {
@@ -142,7 +199,7 @@ export const subject_delete = (id: string) => {
 //     return result;
 // }
 
-export const teacher_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Teacher, order?: 'asc' | 'desc' }) => {
+export const teacher_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Teacher, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
@@ -174,7 +231,7 @@ export const teacher_filter = (filter: { name?: string, classIds?: string[], pag
         }
     }
     const totalResult = result.length;
-    if (_page) {
+    if (_page && !all) {
         result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
     }
 
@@ -217,7 +274,7 @@ export const teacher_delete = (id: string) => {
 //     return result;
 // }
 
-export const parent_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Parent, order?: 'asc' | 'desc' }) => {
+export const parent_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Parent, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
@@ -249,7 +306,7 @@ export const parent_filter = (filter: { name?: string, classIds?: string[], page
         }
     }
     const totalResult = result.length;
-    if (_page) {
+    if (_page && !all) {
         result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
     }
 
@@ -312,7 +369,7 @@ export const student_by_parent = (parentId: string) => {
     return studentsFull(result);
 }
 
-export const student_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Student, order?: 'asc' | 'desc' }) => {
+export const student_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Student, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
@@ -340,7 +397,7 @@ export const student_filter = (filter: { name?: string, classIds?: string[], pag
         }
     }
     const totalResult = result.length;
-    if (_page) {
+    if (_page && !all) {
         result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
     }
     const students = studentsFull(result);

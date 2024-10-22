@@ -4,6 +4,13 @@ import z from "zod";
 import { ParentUpdateData, Parent, ParentUpdateDataSchema } from "./types";
 
 export const parentController: CreateServerOptions['beforeRoute'] = (app) => {
+    app.get('/api/parents/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(parentsQuerySchema).middleware('query'), (req, res) => {
+        // get parents
+        const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as ParentsQuery;
+        const list = parent_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
+        res.json(list);
+        res.status(200);
+    });
     app.get('/api/parents/', HttpCallAuthentication().middleware(), HttpCallValidation(parentsQuerySchema).middleware('query'), (req, res) => {
         // get parents
         const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as ParentsQuery;

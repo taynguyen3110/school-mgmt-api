@@ -4,6 +4,13 @@ import z from "zod";
 import { SubjectUpdateData, SubjectUpdateDataSchema } from "./types";
 
 export const subjectController: CreateServerOptions['beforeRoute'] = (app) => {
+    app.get('/api/subjects/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(subjectsQuerySchema).middleware('query'), (req, res) => {
+        // get subjects
+        const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as SubjectsQuery;
+        const list = subject_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
+        res.json(list);
+        res.status(200);
+    });
     app.get('/api/subjects/', HttpCallAuthentication().middleware(), HttpCallValidation(subjectsQuerySchema).middleware('query'), (req, res) => {
         // get subjects
         const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as SubjectsQuery;
