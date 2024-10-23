@@ -5,6 +5,7 @@
       "lastName": "Doe",
       "firstName": "John",
       "email": "u1@example.com",
+      "password": "password01",
       "role": "admin",
       "isBlocked": false,
       "profileUrl": "https://example.com/u1"
@@ -17,6 +18,74 @@
       "studentIds": [
         "s1"
       ]
+    },
+    "c2": {
+      "id": "c2",
+      "name": "Class 2"
+    },
+    "c3": {
+      "id": "c3",
+      "name": "Class 3"
+    },
+    "c4": {
+      "id": "c4",
+      "name": "Class 4"
+    },
+    "c5": {
+      "id": "c5",
+      "name": "Class 5"
+    },
+    "c6": {
+      "id": "c6",
+      "name": "Class 6"
+    },
+    "c7": {
+      "id": "c7",
+      "name": "Class 7"
+    },
+    "c8": {
+      "id": "c8",
+      "name": "Class 8"
+    },
+    "c9": {
+      "id": "c9",
+      "name": "Class 9"
+    },
+    "c10": {
+      "id": "c10",
+      "name": "Class 10"
+    },
+    "c11": {
+      "id": "c11",
+      "name": "Class 11"
+    },
+    "c12": {
+      "id": "c12",
+      "name": "Class 12"
+    },
+    "c13": {
+      "id": "c13",
+      "name": "Class 13"
+    },
+    "c14": {
+      "id": "c14",
+      "name": "Class 14"
+    },
+    "c15": {
+      "id": "c15",
+      "name": "Class 15"
+    },
+    "c16": {
+      "id": "c16",
+      "name": "Class 16"
+    },
+    "c17": {
+      "id": "c17",
+      "name": "Class 17"
+    },
+    "c18": {
+      "id": "c18",
+      "name": "Class 18"
     }
   },
   "subjects": {
@@ -30,6 +99,176 @@
         "friday"
       ],
       "teacherId": "t1"
+    },
+    "s2": {
+      "id": "s2",
+      "name": "English",
+      "classId": "c2",
+      "daysOfWeek": [
+        "tuesday",
+        "thursday"
+      ],
+      "teacherId": "t2"
+    },
+    "s3": {
+      "id": "s3",
+      "name": "Science",
+      "classId": "c3",
+      "daysOfWeek": [
+        "monday",
+        "thursday"
+      ],
+      "teacherId": "t3"
+    },
+    "s4": {
+      "id": "s4",
+      "name": "History",
+      "classId": "c4",
+      "daysOfWeek": [
+        "tuesday",
+        "friday"
+      ],
+      "teacherId": "t4"
+    },
+    "s5": {
+      "id": "s5",
+      "name": "Geography",
+      "classId": "c5",
+      "daysOfWeek": [
+        "wednesday",
+        "friday"
+      ],
+      "teacherId": "t5"
+    },
+    "s6": {
+      "id": "s6",
+      "name": "Physical Education",
+      "classId": "c6",
+      "daysOfWeek": [
+        "monday",
+        "thursday"
+      ],
+      "teacherId": "t1"
+    },
+    "s7": {
+      "id": "s7",
+      "name": "Art",
+      "classId": "c7",
+      "daysOfWeek": [
+        "tuesday",
+        "friday"
+      ],
+      "teacherId": "t2"
+    },
+    "s8": {
+      "id": "s8",
+      "name": "Music",
+      "classId": "c8",
+      "daysOfWeek": [
+        "wednesday",
+        "friday"
+      ],
+      "teacherId": "t3"
+    },
+    "s9": {
+      "id": "s9",
+      "name": "Computer Science",
+      "classId": "c9",
+      "daysOfWeek": [
+        "monday",
+        "wednesday"
+      ],
+      "teacherId": "t4"
+    },
+    "s10": {
+      "id": "s10",
+      "name": "Biology",
+      "classId": "c10",
+      "daysOfWeek": [
+        "tuesday",
+        "thursday"
+      ],
+      "teacherId": "t5"
+    },
+    "s11": {
+      "id": "s11",
+      "name": "Chemistry",
+      "classId": "c11",
+      "daysOfWeek": [
+        "monday",
+        "friday"
+      ],
+      "teacherId": "t1"
+    },
+    "s12": {
+      "id": "s12",
+      "name": "Physics",
+      "classId": "c12",
+      "daysOfWeek": [
+        "wednesday",
+        "friday"
+      ],
+      "teacherId": "t2"
+    },
+    "s13": {
+      "id": "s13",
+      "name": "Economics",
+      "classId": "c13",
+      "daysOfWeek": [
+        "tuesday",
+        "thursday"
+      ],
+      "teacherId": "t3"
+    },
+    "s14": {
+      "id": "s14",
+      "name": "Literature",
+      "classId": "c14",
+      "daysOfWeek": [
+        "monday",
+        "wednesday"
+      ],
+      "teacherId": "t4"
+    },
+    "s15": {
+      "id": "s15",
+      "name": "Philosophy",
+      "classId": "c15",
+      "daysOfWeek": [
+        "thursday",
+        "friday"
+      ],
+      "teacherId": "t5"
+    },
+    "s16": {
+      "id": "s16",
+      "name": "Sociology",
+      "classId": "c16",
+      "daysOfWeek": [
+        "monday",
+        "friday"
+      ],
+      "teacherId": "t1"
+    },
+    "s17": {
+      "id": "s17",
+      "name": "French",
+      "classId": "c17",
+      "daysOfWeek": [
+        "tuesday",
+        "thursday"
+      ],
+      "teacherId": "t2"
+    },
+    "s18": {
+      "id": "s18",
+      "name": "Spanish",
+      "classId": "c18",
+      "daysOfWeek": [
+        "monday",
+        "wednesday"
+      ],
+      "teacherId": "t3"
     }
   },
   "teachers": {
@@ -43,6 +282,50 @@
       "phone": "217-555-1234",
       "profileUrl": "https://example.com/t1",
       "admissionDate": "2010-01-01"
+    },
+    "t2": {
+      "id": "t2",
+      "lastName": "Smith",
+      "firstName": "Emma",
+      "address": "124 Elm St, Springfield, IL 62702",
+      "email": "t2@example.com",
+      "gender": "female",
+      "phone": "217-555-1235",
+      "profileUrl": "https://example.com/t2",
+      "admissionDate": "2012-03-05"
+    },
+    "t3": {
+      "id": "t3",
+      "lastName": "Johnson",
+      "firstName": "Michael",
+      "address": "125 Pine St, Springfield, IL 62703",
+      "email": "t3@example.com",
+      "gender": "male",
+      "phone": "217-555-1236",
+      "profileUrl": "https://example.com/t3",
+      "admissionDate": "2015-08-12"
+    },
+    "t4": {
+      "id": "t4",
+      "lastName": "Brown",
+      "firstName": "Olivia",
+      "address": "126 Oak St, Springfield, IL 62704",
+      "email": "t4@example.com",
+      "gender": "female",
+      "phone": "217-555-1237",
+      "profileUrl": "https://example.com/t4",
+      "admissionDate": "2018-01-20"
+    },
+    "t5": {
+      "id": "t5",
+      "lastName": "Williams",
+      "firstName": "James",
+      "address": "127 Maple St, Springfield, IL 62705",
+      "email": "t5@example.com",
+      "gender": "male",
+      "phone": "217-555-1238",
+      "profileUrl": "https://example.com/t5",
+      "admissionDate": "2020-09-15"
     }
   },
   "parents": {
@@ -61,17 +344,395 @@
       "firstName": "Jane",
       "address": "123 Main St, Springfield, IL 62701",
       "email": "p2@example.com",
-      "phone": "217-555-1234",
+      "phone": "217-555-1235",
       "profileUrl": "https://example.com/p2"
     },
-    "s1728130260760": {
-      "id": "s1728130260760",
-      "lastName": "Do 3e",
-      "firstName": "John",
-      "address": "123 Main St, Springfield, IL 62701",
-      "email": "p1@example.com",
-      "phone": "217-555-1234",
-      "profileUrl": "https://example.com/p1"
+    "p3": {
+      "id": "p3",
+      "lastName": "Smith",
+      "firstName": "Emily",
+      "address": "124 Maple St, Springfield, IL 62701",
+      "email": "p3@example.com",
+      "phone": "217-555-1236",
+      "profileUrl": "https://example.com/p3"
+    },
+    "p4": {
+      "id": "p4",
+      "lastName": "Smith",
+      "firstName": "Michael",
+      "address": "124 Maple St, Springfield, IL 62701",
+      "email": "p4@example.com",
+      "phone": "217-555-1237",
+      "profileUrl": "https://example.com/p4"
+    },
+    "p5": {
+      "id": "p5",
+      "lastName": "Johnson",
+      "firstName": "Olivia",
+      "address": "125 Oak St, Springfield, IL 62701",
+      "email": "p5@example.com",
+      "phone": "217-555-1238",
+      "profileUrl": "https://example.com/p5"
+    },
+    "p6": {
+      "id": "p6",
+      "lastName": "Johnson",
+      "firstName": "James",
+      "address": "125 Oak St, Springfield, IL 62701",
+      "email": "p6@example.com",
+      "phone": "217-555-1239",
+      "profileUrl": "https://example.com/p6"
+    },
+    "p7": {
+      "id": "p7",
+      "lastName": "Williams",
+      "firstName": "Emma",
+      "address": "126 Birch St, Springfield, IL 62701",
+      "email": "p7@example.com",
+      "phone": "217-555-1240",
+      "profileUrl": "https://example.com/p7"
+    },
+    "p8": {
+      "id": "p8",
+      "lastName": "Williams",
+      "firstName": "Liam",
+      "address": "126 Birch St, Springfield, IL 62701",
+      "email": "p8@example.com",
+      "phone": "217-555-1241",
+      "profileUrl": "https://example.com/p8"
+    },
+    "p9": {
+      "id": "p9",
+      "lastName": "Brown",
+      "firstName": "Sophia",
+      "address": "127 Pine St, Springfield, IL 62701",
+      "email": "p9@example.com",
+      "phone": "217-555-1242",
+      "profileUrl": "https://example.com/p9"
+    },
+    "p10": {
+      "id": "p10",
+      "lastName": "Brown",
+      "firstName": "Alexander",
+      "address": "127 Pine St, Springfield, IL 62701",
+      "email": "p10@example.com",
+      "phone": "217-555-1243",
+      "profileUrl": "https://example.com/p10"
+    },
+    "p11": {
+      "id": "p11",
+      "lastName": "Jones",
+      "firstName": "Ava",
+      "address": "128 Willow St, Springfield, IL 62701",
+      "email": "p11@example.com",
+      "phone": "217-555-1244",
+      "profileUrl": "https://example.com/p11"
+    },
+    "p12": {
+      "id": "p12",
+      "lastName": "Jones",
+      "firstName": "Henry",
+      "address": "128 Willow St, Springfield, IL 62701",
+      "email": "p12@example.com",
+      "phone": "217-555-1245",
+      "profileUrl": "https://example.com/p12"
+    },
+    "p13": {
+      "id": "p13",
+      "lastName": "Miller",
+      "firstName": "Isabella",
+      "address": "129 Cedar St, Springfield, IL 62701",
+      "email": "p13@example.com",
+      "phone": "217-555-1246",
+      "profileUrl": "https://example.com/p13"
+    },
+    "p14": {
+      "id": "p14",
+      "lastName": "Miller",
+      "firstName": "Daniel",
+      "address": "129 Cedar St, Springfield, IL 62701",
+      "email": "p14@example.com",
+      "phone": "217-555-1247",
+      "profileUrl": "https://example.com/p14"
+    },
+    "p15": {
+      "id": "p15",
+      "lastName": "Davis",
+      "firstName": "Charlotte",
+      "address": "130 Elm St, Springfield, IL 62701",
+      "email": "p15@example.com",
+      "phone": "217-555-1248",
+      "profileUrl": "https://example.com/p15"
+    },
+    "p16": {
+      "id": "p16",
+      "lastName": "Davis",
+      "firstName": "David",
+      "address": "130 Elm St, Springfield, IL 62701",
+      "email": "p16@example.com",
+      "phone": "217-555-1249",
+      "profileUrl": "https://example.com/p16"
+    },
+    "p17": {
+      "id": "p17",
+      "lastName": "Garcia",
+      "firstName": "Mia",
+      "address": "131 Walnut St, Springfield, IL 62701",
+      "email": "p17@example.com",
+      "phone": "217-555-1250",
+      "profileUrl": "https://example.com/p17"
+    },
+    "p18": {
+      "id": "p18",
+      "lastName": "Garcia",
+      "firstName": "Jack",
+      "address": "131 Walnut St, Springfield, IL 62701",
+      "email": "p18@example.com",
+      "phone": "217-555-1251",
+      "profileUrl": "https://example.com/p18"
+    },
+    "p19": {
+      "id": "p19",
+      "lastName": "Martinez",
+      "firstName": "Amelia",
+      "address": "132 Magnolia St, Springfield, IL 62701",
+      "email": "p19@example.com",
+      "phone": "217-555-1252",
+      "profileUrl": "https://example.com/p19"
+    },
+    "p20": {
+      "id": "p20",
+      "lastName": "Martinez",
+      "firstName": "Elijah",
+      "address": "132 Magnolia St, Springfield, IL 62701",
+      "email": "p20@example.com",
+      "phone": "217-555-1253",
+      "profileUrl": "https://example.com/p20"
+    },
+    "p21": {
+      "id": "p21",
+      "lastName": "Rodriguez",
+      "firstName": "Evelyn",
+      "address": "133 Sycamore St, Springfield, IL 62701",
+      "email": "p21@example.com",
+      "phone": "217-555-1254",
+      "profileUrl": "https://example.com/p21"
+    },
+    "p22": {
+      "id": "p22",
+      "lastName": "Rodriguez",
+      "firstName": "Benjamin",
+      "address": "133 Sycamore St, Springfield, IL 62701",
+      "email": "p22@example.com",
+      "phone": "217-555-1255",
+      "profileUrl": "https://example.com/p22"
+    },
+    "p23": {
+      "id": "p23",
+      "lastName": "Wilson",
+      "firstName": "Ella",
+      "address": "134 Aspen St, Springfield, IL 62701",
+      "email": "p23@example.com",
+      "phone": "217-555-1256",
+      "profileUrl": "https://example.com/p23"
+    },
+    "p24": {
+      "id": "p24",
+      "lastName": "Wilson",
+      "firstName": "Logan",
+      "address": "134 Aspen St, Springfield, IL 62701",
+      "email": "p24@example.com",
+      "phone": "217-555-1257",
+      "profileUrl": "https://example.com/p24"
+    },
+    "p25": {
+      "id": "p25",
+      "lastName": "Lee",
+      "firstName": "Grace",
+      "address": "135 Cypress St, Springfield, IL 62701",
+      "email": "p25@example.com",
+      "phone": "217-555-1258",
+      "profileUrl": "https://example.com/p25"
+    },
+    "p26": {
+      "id": "p26",
+      "lastName": "Lee",
+      "firstName": "William",
+      "address": "135 Cypress St, Springfield, IL 62701",
+      "email": "p26@example.com",
+      "phone": "217-555-1259",
+      "profileUrl": "https://example.com/p26"
+    },
+    "p27": {
+      "id": "p27",
+      "lastName": "Walker",
+      "firstName": "Lily",
+      "address": "136 Redwood St, Springfield, IL 62701",
+      "email": "p27@example.com",
+      "phone": "217-555-1260",
+      "profileUrl": "https://example.com/p27"
+    },
+    "p28": {
+      "id": "p28",
+      "lastName": "Walker",
+      "firstName": "Noah",
+      "address": "136 Redwood St, Springfield, IL 62701",
+      "email": "p28@example.com",
+      "phone": "217-555-1261",
+      "profileUrl": "https://example.com/p28"
+    },
+    "p29": {
+      "id": "p29",
+      "lastName": "Young",
+      "firstName": "Chloe",
+      "address": "137 Chestnut St, Springfield, IL 62701",
+      "email": "p29@example.com",
+      "phone": "217-555-1262",
+      "profileUrl": "https://example.com/p29"
+    },
+    "p30": {
+      "id": "p30",
+      "lastName": "Young",
+      "firstName": "Lucas",
+      "address": "137 Chestnut St, Springfield, IL 62701",
+      "email": "p30@example.com",
+      "phone": "217-555-1263",
+      "profileUrl": "https://example.com/p30"
+    },
+    "p31": {
+      "id": "p31",
+      "lastName": "Harris",
+      "firstName": "Harper",
+      "address": "138 Spruce St, Springfield, IL 62701",
+      "email": "p31@example.com",
+      "phone": "217-555-1264",
+      "profileUrl": "https://example.com/p31"
+    },
+    "p32": {
+      "id": "p32",
+      "lastName": "Harris",
+      "firstName": "Mason",
+      "address": "138 Spruce St, Springfield, IL 62701",
+      "email": "p32@example.com",
+      "phone": "217-555-1265",
+      "profileUrl": "https://example.com/p32"
+    },
+    "p33": {
+      "id": "p33",
+      "lastName": "Clark",
+      "firstName": "Ella",
+      "address": "139 Alder St, Springfield, IL 62701",
+      "email": "p33@example.com",
+      "phone": "217-555-1266",
+      "profileUrl": "https://example.com/p33"
+    },
+    "p34": {
+      "id": "p34",
+      "lastName": "Clark",
+      "firstName": "Ethan",
+      "address": "139 Alder St, Springfield, IL 62701",
+      "email": "p34@example.com",
+      "phone": "217-555-1267",
+      "profileUrl": "https://example.com/p34"
+    },
+    "p35": {
+      "id": "p35",
+      "lastName": "Lopez",
+      "firstName": "Avery",
+      "address": "140 Willow St, Springfield, IL 62701",
+      "email": "p35@example.com",
+      "phone": "217-555-1268",
+      "profileUrl": "https://example.com/p35"
+    },
+    "p36": {
+      "id": "p36",
+      "lastName": "Lopez",
+      "firstName": "Sebastian",
+      "address": "140 Willow St, Springfield, IL 62701",
+      "email": "p36@example.com",
+      "phone": "217-555-1269",
+      "profileUrl": "https://example.com/p36"
+    },
+    "p37": {
+      "id": "p37",
+      "lastName": "Gonzalez",
+      "firstName": "Scarlett",
+      "address": "141 Poplar St, Springfield, IL 62701",
+      "email": "p37@example.com",
+      "phone": "217-555-1270",
+      "profileUrl": "https://example.com/p37"
+    },
+    "p38": {
+      "id": "p38",
+      "lastName": "Gonzalez",
+      "firstName": "Matthew",
+      "address": "141 Poplar St, Springfield, IL 62701",
+      "email": "p38@example.com",
+      "phone": "217-555-1271",
+      "profileUrl": "https://example.com/p38"
+    },
+    "p39": {
+      "id": "p39",
+      "lastName": "Hill",
+      "firstName": "Victoria",
+      "address": "142 Maple St, Springfield, IL 62701",
+      "email": "p39@example.com",
+      "phone": "217-555-1272",
+      "profileUrl": "https://example.com/p39"
+    },
+    "p40": {
+      "id": "p40",
+      "lastName": "Hill",
+      "firstName": "Joseph",
+      "address": "142 Maple St, Springfield, IL 62701",
+      "email": "p40@example.com",
+      "phone": "217-555-1273",
+      "profileUrl": "https://example.com/p40"
+    },
+    "p41": {
+      "id": "p41",
+      "lastName": "Scott",
+      "firstName": "Camila",
+      "address": "143 Birch St, Springfield, IL 62701",
+      "email": "p41@example.com",
+      "phone": "217-555-1274",
+      "profileUrl": "https://example.com/p41"
+    },
+    "p42": {
+      "id": "p42",
+      "lastName": "Scott",
+      "firstName": "Samuel",
+      "address": "143 Birch St, Springfield, IL 62701",
+      "email": "p42@example.com",
+      "phone": "217-555-1275",
+      "profileUrl": "https://example.com/p42"
+    },
+    "p43": {
+      "id": "p43",
+      "lastName": "Adams",
+      "firstName": "Zoe",
+      "address": "144 Elm St, Springfield, IL 62701",
+      "email": "p43@example.com",
+      "phone": "217-555-1276",
+      "profileUrl": "https://example.com/p43"
+    },
+    "p44": {
+      "id": "p44",
+      "lastName": "Adams",
+      "firstName": "Ryan",
+      "address": "144 Elm St, Springfield, IL 62701",
+      "email": "p44@example.com",
+      "phone": "217-555-1277",
+      "profileUrl": "https://example.com/p44"
+    },
+    "p45": {
+      "id": "p45",
+      "lastName": "Baker",
+      "firstName": "Luna",
+      "address": "145 Oak St, Springfield, IL 62701",
+      "email": "p45@example.com",
+      "phone": "217-555-1278",
+      "profileUrl": "https://example.com/p45"
     }
   },
   "students": {
@@ -93,6 +754,1123 @@
       ],
       "admissionDate": "2010-01-01",
       "phone": "217-555-1234"
+    },
+    "s2": {
+      "id": "s2",
+      "lastName": "Smith",
+      "firstName": "Emily",
+      "address": "456 Elm St, Springfield, IL 62701",
+      "email": "s2@example.com",
+      "profileUrl": "https://example.com/s2",
+      "gender": "female",
+      "dateOfBirth": "2006-03-15",
+      "classIds": [
+        "c1"
+      ],
+      "parentIds": [
+        "p3",
+        "p4"
+      ],
+      "admissionDate": "2011-09-05",
+      "phone": "217-555-5678"
+    },
+    "s3": {
+      "id": "s3",
+      "lastName": "Johnson",
+      "firstName": "Michael",
+      "address": "789 Oak St, Springfield, IL 62701",
+      "email": "s3@example.com",
+      "profileUrl": "https://example.com/s3",
+      "gender": "male",
+      "dateOfBirth": "2007-05-22",
+      "classIds": [
+        "c2"
+      ],
+      "parentIds": [
+        "p5"
+      ],
+      "admissionDate": "2012-08-20",
+      "phone": "217-555-6789"
+    },
+    "s4": {
+      "id": "s4",
+      "lastName": "Brown",
+      "firstName": "Sophia",
+      "address": "101 Pine St, Springfield, IL 62701",
+      "email": "s4@example.com",
+      "profileUrl": "https://example.com/s4",
+      "gender": "female",
+      "dateOfBirth": "2008-11-30",
+      "classIds": [
+        "c2",
+        "c3"
+      ],
+      "parentIds": [
+        "p6",
+        "p7"
+      ],
+      "admissionDate": "2013-02-14",
+      "phone": "217-555-2345"
+    },
+    "s5": {
+      "id": "s5",
+      "lastName": "Taylor",
+      "firstName": "Liam",
+      "address": "102 Maple St, Springfield, IL 62701",
+      "email": "s5@example.com",
+      "profileUrl": "https://example.com/s5",
+      "gender": "male",
+      "dateOfBirth": "2009-09-09",
+      "classIds": [
+        "c3"
+      ],
+      "parentIds": [
+        "p8"
+      ],
+      "admissionDate": "2014-05-01",
+      "phone": "217-555-3456"
+    },
+    "s6": {
+      "id": "s6",
+      "lastName": "Davis",
+      "firstName": "Olivia",
+      "address": "103 Birch St, Springfield, IL 62701",
+      "email": "s6@example.com",
+      "profileUrl": "https://example.com/s6",
+      "gender": "female",
+      "dateOfBirth": "2010-07-19",
+      "classIds": [
+        "c4"
+      ],
+      "parentIds": [
+        "p9",
+        "p10"
+      ],
+      "admissionDate": "2015-11-23",
+      "phone": "217-555-4567"
+    },
+    "s7": {
+      "id": "s7",
+      "lastName": "Martinez",
+      "firstName": "Lucas",
+      "address": "104 Cedar St, Springfield, IL 62701",
+      "email": "s7@example.com",
+      "profileUrl": "https://example.com/s7",
+      "gender": "male",
+      "dateOfBirth": "2011-04-12",
+      "classIds": [
+        "c4",
+        "c5"
+      ],
+      "parentIds": [
+        "p11",
+        "p12"
+      ],
+      "admissionDate": "2016-09-10",
+      "phone": "217-555-5678"
+    },
+    "s8": {
+      "id": "s8",
+      "lastName": "Anderson",
+      "firstName": "Ava",
+      "address": "105 Walnut St, Springfield, IL 62701",
+      "email": "s8@example.com",
+      "profileUrl": "https://example.com/s8",
+      "gender": "female",
+      "dateOfBirth": "2012-01-22",
+      "classIds": [
+        "c5"
+      ],
+      "parentIds": [
+        "p13"
+      ],
+      "admissionDate": "2017-03-18",
+      "phone": "217-555-6789"
+    },
+    "s9": {
+      "id": "s9",
+      "lastName": "Garcia",
+      "firstName": "Ethan",
+      "address": "106 Spruce St, Springfield, IL 62701",
+      "email": "s9@example.com",
+      "profileUrl": "https://example.com/s9",
+      "gender": "male",
+      "dateOfBirth": "2013-08-05",
+      "classIds": [
+        "c6"
+      ],
+      "parentIds": [
+        "p14",
+        "p15"
+      ],
+      "admissionDate": "2018-01-11",
+      "phone": "217-555-7890"
+    },
+    "s10": {
+      "id": "s10",
+      "lastName": "Lee",
+      "firstName": "Mia",
+      "address": "107 Chestnut St, Springfield, IL 62701",
+      "email": "s10@example.com",
+      "profileUrl": "https://example.com/s10",
+      "gender": "female",
+      "dateOfBirth": "2014-06-14",
+      "classIds": [
+        "c6",
+        "c7"
+      ],
+      "parentIds": [
+        "p16"
+      ],
+      "admissionDate": "2019-05-20",
+      "phone": "217-555-8901"
+    },
+    "s11": {
+      "id": "s11",
+      "lastName": "Hernandez",
+      "firstName": "Daniel",
+      "address": "108 Willow St, Springfield, IL 62701",
+      "email": "s11@example.com",
+      "profileUrl": "https://example.com/s11",
+      "gender": "male",
+      "dateOfBirth": "2015-02-28",
+      "classIds": [
+        "c7"
+      ],
+      "parentIds": [
+        "p17",
+        "p18"
+      ],
+      "admissionDate": "2020-04-12",
+      "phone": "217-555-9012"
+    },
+    "s12": {
+      "id": "s12",
+      "lastName": "Clark",
+      "firstName": "Isabella",
+      "address": "109 Cypress St, Springfield, IL 62701",
+      "email": "s12@example.com",
+      "profileUrl": "https://example.com/s12",
+      "gender": "female",
+      "dateOfBirth": "2016-12-13",
+      "classIds": [
+        "c8"
+      ],
+      "parentIds": [
+        "p19"
+      ],
+      "admissionDate": "2021-09-15",
+      "phone": "217-555-1235"
+    },
+    "s13": {
+      "id": "s13",
+      "lastName": "Lopez",
+      "firstName": "Benjamin",
+      "address": "110 Aspen St, Springfield, IL 62701",
+      "email": "s13@example.com",
+      "profileUrl": "https://example.com/s13",
+      "gender": "male",
+      "dateOfBirth": "2012-10-03",
+      "classIds": [
+        "c8"
+      ],
+      "parentIds": [
+        "p20"
+      ],
+      "admissionDate": "2018-06-14",
+      "phone": "217-555-2345"
+    },
+    "s14": {
+      "id": "s14",
+      "lastName": "Walker",
+      "firstName": "Zoe",
+      "address": "111 Hickory St, Springfield, IL 62701",
+      "email": "s14@example.com",
+      "profileUrl": "https://example.com/s14",
+      "gender": "female",
+      "dateOfBirth": "2011-03-07",
+      "classIds": [
+        "c9"
+      ],
+      "parentIds": [
+        "p21"
+      ],
+      "admissionDate": "2017-02-21",
+      "phone": "217-555-3456"
+    },
+    "s15": {
+      "id": "s15",
+      "lastName": "Young",
+      "firstName": "Elijah",
+      "address": "112 Poplar St, Springfield, IL 62701",
+      "email": "s15@example.com",
+      "profileUrl": "https://example.com/s15",
+      "gender": "male",
+      "dateOfBirth": "2010-09-21",
+      "classIds": [
+        "c9"
+      ],
+      "parentIds": [
+        "p22",
+        "p23"
+      ],
+      "admissionDate": "2016-11-01",
+      "phone": "217-555-4567"
+    },
+    "s16": {
+      "id": "s16",
+      "lastName": "King",
+      "firstName": "Grace",
+      "address": "113 Sycamore St, Springfield, IL 62701",
+      "email": "s16@example.com",
+      "profileUrl": "https://example.com/s16",
+      "gender": "female",
+      "dateOfBirth": "2009-05-11",
+      "classIds": [
+        "c10"
+      ],
+      "parentIds": [
+        "p24"
+      ],
+      "admissionDate": "2015-04-18",
+      "phone": "217-555-5678"
+    },
+    "s17": {
+      "id": "s17",
+      "lastName": "Scott",
+      "firstName": "James",
+      "address": "114 Redwood St, Springfield, IL 62701",
+      "email": "s17@example.com",
+      "profileUrl": "https://example.com/s17",
+      "gender": "male",
+      "dateOfBirth": "2008-04-30",
+      "classIds": [
+        "c10"
+      ],
+      "parentIds": [
+        "p25",
+        "p26"
+      ],
+      "admissionDate": "2013-09-10",
+      "phone": "217-555-6789"
+    },
+    "s18": {
+      "id": "s18",
+      "lastName": "Green",
+      "firstName": "Hannah",
+      "address": "115 Magnolia St, Springfield, IL 62701",
+      "email": "s18@example.com",
+      "profileUrl": "https://example.com/s18",
+      "gender": "female",
+      "dateOfBirth": "2012-11-20",
+      "classIds": [
+        "c11"
+      ],
+      "parentIds": [
+        "p27"
+      ],
+      "admissionDate": "2018-03-04",
+      "phone": "217-555-7890"
+    },
+    "s19": {
+      "id": "s19",
+      "lastName": "Baker",
+      "firstName": "Aiden",
+      "address": "116 Cherry St, Springfield, IL 62701",
+      "email": "s19@example.com",
+      "profileUrl": "https://example.com/s19",
+      "gender": "male",
+      "dateOfBirth": "2013-02-17",
+      "classIds": [
+        "c11",
+        "c12"
+      ],
+      "parentIds": [
+        "p28",
+        "p29"
+      ],
+      "admissionDate": "2019-05-21",
+      "phone": "217-555-8901"
+    },
+    "s20": {
+      "id": "s20",
+      "lastName": "Nelson",
+      "firstName": "Ella",
+      "address": "117 Maple St, Springfield, IL 62701",
+      "email": "s20@example.com",
+      "profileUrl": "https://example.com/s20",
+      "gender": "female",
+      "dateOfBirth": "2011-08-14",
+      "classIds": [
+        "c12"
+      ],
+      "parentIds": [
+        "p30"
+      ],
+      "admissionDate": "2017-11-30",
+      "phone": "217-555-9012"
+    },
+    "s21": {
+      "id": "s21",
+      "lastName": "Reed",
+      "firstName": "David",
+      "address": "118 Pine St, Springfield, IL 62701",
+      "email": "s21@example.com",
+      "profileUrl": "https://example.com/s21",
+      "gender": "male",
+      "dateOfBirth": "2010-06-05",
+      "classIds": [
+        "c13"
+      ],
+      "parentIds": [
+        "p31",
+        "p32"
+      ],
+      "admissionDate": "2016-08-15",
+      "phone": "217-555-1236"
+    },
+    "s22": {
+      "id": "s22",
+      "lastName": "Carter",
+      "firstName": "Madison",
+      "address": "119 Willow St, Springfield, IL 62701",
+      "email": "s22@example.com",
+      "profileUrl": "https://example.com/s22",
+      "gender": "female",
+      "dateOfBirth": "2014-03-25",
+      "classIds": [
+        "c13",
+        "c14"
+      ],
+      "parentIds": [
+        "p33"
+      ],
+      "admissionDate": "2020-04-22",
+      "phone": "217-555-2346"
+    },
+    "s23": {
+      "id": "s23",
+      "lastName": "Mitchell",
+      "firstName": "Alexander",
+      "address": "120 Cedar St, Springfield, IL 62701",
+      "email": "s23@example.com",
+      "profileUrl": "https://example.com/s23",
+      "gender": "male",
+      "dateOfBirth": "2007-07-12",
+      "classIds": [
+        "c14"
+      ],
+      "parentIds": [
+        "p34",
+        "p35"
+      ],
+      "admissionDate": "2012-10-04",
+      "phone": "217-555-3457"
+    },
+    "s24": {
+      "id": "s24",
+      "lastName": "Perez",
+      "firstName": "Chloe",
+      "address": "121 Elm St, Springfield, IL 62701",
+      "email": "s24@example.com",
+      "profileUrl": "https://example.com/s24",
+      "gender": "female",
+      "dateOfBirth": "2009-05-10",
+      "classIds": [
+        "c15"
+      ],
+      "parentIds": [
+        "p36"
+      ],
+      "admissionDate": "2014-01-17",
+      "phone": "217-555-4568"
+    },
+    "s25": {
+      "id": "s25",
+      "lastName": "Adams",
+      "firstName": "Samuel",
+      "address": "122 Birch St, Springfield, IL 62701",
+      "email": "s25@example.com",
+      "profileUrl": "https://example.com/s25",
+      "gender": "male",
+      "dateOfBirth": "2015-10-22",
+      "classIds": [
+        "c15"
+      ],
+      "parentIds": [
+        "p37",
+        "p38"
+      ],
+      "admissionDate": "2021-02-14",
+      "phone": "217-555-5679"
+    },
+    "s26": {
+      "id": "s26",
+      "lastName": "Roberts",
+      "firstName": "Ella",
+      "address": "123 Oak St, Springfield, IL 62701",
+      "email": "s26@example.com",
+      "profileUrl": "https://example.com/s26",
+      "gender": "female",
+      "dateOfBirth": "2008-12-18",
+      "classIds": [
+        "c16"
+      ],
+      "parentIds": [
+        "p39"
+      ],
+      "admissionDate": "2013-07-21",
+      "phone": "217-555-6780"
+    },
+    "s27": {
+      "id": "s27",
+      "lastName": "Turner",
+      "firstName": "Ryan",
+      "address": "124 Spruce St, Springfield, IL 62701",
+      "email": "s27@example.com",
+      "profileUrl": "https://example.com/s27",
+      "gender": "male",
+      "dateOfBirth": "2013-01-08",
+      "classIds": [
+        "c16",
+        "c17"
+      ],
+      "parentIds": [
+        "p40",
+        "p41"
+      ],
+      "admissionDate": "2019-06-08",
+      "phone": "217-555-7891"
+    },
+    "s28": {
+      "id": "s28",
+      "lastName": "Phillips",
+      "firstName": "Natalie",
+      "address": "125 Chestnut St, Springfield, IL 62701",
+      "email": "s28@example.com",
+      "profileUrl": "https://example.com/s28",
+      "gender": "female",
+      "dateOfBirth": "2011-02-05",
+      "classIds": [
+        "c17"
+      ],
+      "parentIds": [
+        "p42"
+      ],
+      "admissionDate": "2017-12-11",
+      "phone": "217-555-8902"
+    },
+    "s29": {
+      "id": "s29",
+      "lastName": "Campbell",
+      "firstName": "Christopher",
+      "address": "126 Poplar St, Springfield, IL 62701",
+      "email": "s29@example.com",
+      "profileUrl": "https://example.com/s29",
+      "gender": "male",
+      "dateOfBirth": "2009-09-25",
+      "classIds": [
+        "c18"
+      ],
+      "parentIds": [
+        "p43",
+        "p44"
+      ],
+      "admissionDate": "2015-03-10",
+      "phone": "217-555-9013"
+    },
+    "s30": {
+      "id": "s30",
+      "lastName": "Parker",
+      "firstName": "Samantha",
+      "address": "127 Sycamore St, Springfield, IL 62701",
+      "email": "s30@example.com",
+      "profileUrl": "https://example.com/s30",
+      "gender": "female",
+      "dateOfBirth": "2010-11-19",
+      "classIds": [
+        "c18"
+      ],
+      "parentIds": [
+        "p45"
+      ],
+      "admissionDate": "2016-08-27",
+      "phone": "217-555-1237"
+    },
+    "s31": {
+      "id": "s31",
+      "lastName": "Doe",
+      "firstName": "Jane",
+      "address": "123 Main St, Springfield, IL 62701",
+      "email": "s1@example.com",
+      "profileUrl": "https://example.com/s1",
+      "gender": "male",
+      "dateOfBirth": "2005-01-01",
+      "classIds": [
+        "c1"
+      ],
+      "parentIds": [
+        "p1",
+        "p2"
+      ],
+      "admissionDate": "2010-01-01",
+      "phone": "217-555-1234"
+    },
+    "s32": {
+      "id": "s32",
+      "lastName": "Smith",
+      "firstName": "Emily",
+      "address": "456 Elm St, Springfield, IL 62701",
+      "email": "s2@example.com",
+      "profileUrl": "https://example.com/s2",
+      "gender": "female",
+      "dateOfBirth": "2006-03-15",
+      "classIds": [
+        "c1"
+      ],
+      "parentIds": [
+        "p3",
+        "p4"
+      ],
+      "admissionDate": "2011-09-05",
+      "phone": "217-555-5678"
+    },
+    "s33": {
+      "id": "s33",
+      "lastName": "Johnson",
+      "firstName": "Michael",
+      "address": "789 Oak St, Springfield, IL 62701",
+      "email": "s3@example.com",
+      "profileUrl": "https://example.com/s3",
+      "gender": "male",
+      "dateOfBirth": "2007-05-22",
+      "classIds": [
+        "c2"
+      ],
+      "parentIds": [
+        "p5"
+      ],
+      "admissionDate": "2012-08-20",
+      "phone": "217-555-6789"
+    },
+    "s34": {
+      "id": "s34",
+      "lastName": "Brown",
+      "firstName": "Sophia",
+      "address": "101 Pine St, Springfield, IL 62701",
+      "email": "s4@example.com",
+      "profileUrl": "https://example.com/s4",
+      "gender": "female",
+      "dateOfBirth": "2008-11-30",
+      "classIds": [
+        "c2",
+        "c3"
+      ],
+      "parentIds": [
+        "p6",
+        "p7"
+      ],
+      "admissionDate": "2013-02-14",
+      "phone": "217-555-2345"
+    },
+    "s35": {
+      "id": "s35",
+      "lastName": "Taylor",
+      "firstName": "Liam",
+      "address": "102 Maple St, Springfield, IL 62701",
+      "email": "s5@example.com",
+      "profileUrl": "https://example.com/s5",
+      "gender": "male",
+      "dateOfBirth": "2009-09-09",
+      "classIds": [
+        "c3"
+      ],
+      "parentIds": [
+        "p8"
+      ],
+      "admissionDate": "2014-05-01",
+      "phone": "217-555-3456"
+    },
+    "s36": {
+      "id": "s36",
+      "lastName": "Davis",
+      "firstName": "Olivia",
+      "address": "103 Birch St, Springfield, IL 62701",
+      "email": "s6@example.com",
+      "profileUrl": "https://example.com/s6",
+      "gender": "female",
+      "dateOfBirth": "2010-07-19",
+      "classIds": [
+        "c4"
+      ],
+      "parentIds": [
+        "p9",
+        "p10"
+      ],
+      "admissionDate": "2015-11-23",
+      "phone": "217-555-4567"
+    },
+    "s37": {
+      "id": "s37",
+      "lastName": "Martinez",
+      "firstName": "Lucas",
+      "address": "104 Cedar St, Springfield, IL 62701",
+      "email": "s7@example.com",
+      "profileUrl": "https://example.com/s7",
+      "gender": "male",
+      "dateOfBirth": "2011-04-12",
+      "classIds": [
+        "c4",
+        "c5"
+      ],
+      "parentIds": [
+        "p11",
+        "p12"
+      ],
+      "admissionDate": "2016-09-10",
+      "phone": "217-555-5678"
+    },
+    "s38": {
+      "id": "s38",
+      "lastName": "Anderson",
+      "firstName": "Ava",
+      "address": "105 Walnut St, Springfield, IL 62701",
+      "email": "s8@example.com",
+      "profileUrl": "https://example.com/s8",
+      "gender": "female",
+      "dateOfBirth": "2012-01-22",
+      "classIds": [
+        "c5"
+      ],
+      "parentIds": [
+        "p13"
+      ],
+      "admissionDate": "2017-03-18",
+      "phone": "217-555-6789"
+    },
+    "s39": {
+      "id": "s39",
+      "lastName": "Garcia",
+      "firstName": "Ethan",
+      "address": "106 Spruce St, Springfield, IL 62701",
+      "email": "s9@example.com",
+      "profileUrl": "https://example.com/s9",
+      "gender": "male",
+      "dateOfBirth": "2013-08-05",
+      "classIds": [
+        "c6"
+      ],
+      "parentIds": [
+        "p14",
+        "p15"
+      ],
+      "admissionDate": "2018-01-11",
+      "phone": "217-555-7890"
+    },
+    "s40": {
+      "id": "s40",
+      "lastName": "Lee",
+      "firstName": "Mia",
+      "address": "107 Chestnut St, Springfield, IL 62701",
+      "email": "s10@example.com",
+      "profileUrl": "https://example.com/s10",
+      "gender": "female",
+      "dateOfBirth": "2014-06-14",
+      "classIds": [
+        "c6",
+        "c7"
+      ],
+      "parentIds": [
+        "p16"
+      ],
+      "admissionDate": "2019-05-20",
+      "phone": "217-555-8901"
+    },
+    "s41": {
+      "id": "s41",
+      "lastName": "Hernandez",
+      "firstName": "Daniel",
+      "address": "108 Willow St, Springfield, IL 62701",
+      "email": "s11@example.com",
+      "profileUrl": "https://example.com/s11",
+      "gender": "male",
+      "dateOfBirth": "2015-02-28",
+      "classIds": [
+        "c7"
+      ],
+      "parentIds": [
+        "p17",
+        "p18"
+      ],
+      "admissionDate": "2020-04-12",
+      "phone": "217-555-9012"
+    },
+    "s42": {
+      "id": "s42",
+      "lastName": "Clark",
+      "firstName": "Isabella",
+      "address": "109 Cypress St, Springfield, IL 62701",
+      "email": "s12@example.com",
+      "profileUrl": "https://example.com/s12",
+      "gender": "female",
+      "dateOfBirth": "2016-12-13",
+      "classIds": [
+        "c8"
+      ],
+      "parentIds": [
+        "p19"
+      ],
+      "admissionDate": "2021-09-15",
+      "phone": "217-555-1235"
+    },
+    "s43": {
+      "id": "s43",
+      "lastName": "Lopez",
+      "firstName": "Benjamin",
+      "address": "110 Aspen St, Springfield, IL 62701",
+      "email": "s13@example.com",
+      "profileUrl": "https://example.com/s13",
+      "gender": "male",
+      "dateOfBirth": "2012-10-03",
+      "classIds": [
+        "c8"
+      ],
+      "parentIds": [
+        "p20"
+      ],
+      "admissionDate": "2018-06-14",
+      "phone": "217-555-2345"
+    },
+    "s44": {
+      "id": "s44",
+      "lastName": "Walker",
+      "firstName": "Zoe",
+      "address": "111 Hickory St, Springfield, IL 62701",
+      "email": "s14@example.com",
+      "profileUrl": "https://example.com/s14",
+      "gender": "female",
+      "dateOfBirth": "2011-03-07",
+      "classIds": [
+        "c9"
+      ],
+      "parentIds": [
+        "p21"
+      ],
+      "admissionDate": "2017-02-21",
+      "phone": "217-555-3456"
+    },
+    "s45": {
+      "id": "s45",
+      "lastName": "Young",
+      "firstName": "Elijah",
+      "address": "112 Poplar St, Springfield, IL 62701",
+      "email": "s15@example.com",
+      "profileUrl": "https://example.com/s15",
+      "gender": "male",
+      "dateOfBirth": "2010-09-21",
+      "classIds": [
+        "c9"
+      ],
+      "parentIds": [
+        "p22",
+        "p23"
+      ],
+      "admissionDate": "2016-11-01",
+      "phone": "217-555-4567"
+    },
+    "s46": {
+      "id": "s46",
+      "lastName": "King",
+      "firstName": "Grace",
+      "address": "113 Sycamore St, Springfield, IL 62701",
+      "email": "s16@example.com",
+      "profileUrl": "https://example.com/s16",
+      "gender": "female",
+      "dateOfBirth": "2009-05-11",
+      "classIds": [
+        "c10"
+      ],
+      "parentIds": [
+        "p24"
+      ],
+      "admissionDate": "2015-04-18",
+      "phone": "217-555-5678"
+    },
+    "s47": {
+      "id": "s47",
+      "lastName": "Scott",
+      "firstName": "James",
+      "address": "114 Redwood St, Springfield, IL 62701",
+      "email": "s17@example.com",
+      "profileUrl": "https://example.com/s17",
+      "gender": "male",
+      "dateOfBirth": "2008-04-30",
+      "classIds": [
+        "c10"
+      ],
+      "parentIds": [
+        "p25",
+        "p26"
+      ],
+      "admissionDate": "2013-09-10",
+      "phone": "217-555-6789"
+    },
+    "s48": {
+      "id": "s48",
+      "lastName": "Green",
+      "firstName": "Hannah",
+      "address": "115 Magnolia St, Springfield, IL 62701",
+      "email": "s18@example.com",
+      "profileUrl": "https://example.com/s18",
+      "gender": "female",
+      "dateOfBirth": "2012-11-20",
+      "classIds": [
+        "c11"
+      ],
+      "parentIds": [
+        "p27"
+      ],
+      "admissionDate": "2018-03-04",
+      "phone": "217-555-7890"
+    },
+    "s49": {
+      "id": "s49",
+      "lastName": "Baker",
+      "firstName": "Aiden",
+      "address": "116 Cherry St, Springfield, IL 62701",
+      "email": "s19@example.com",
+      "profileUrl": "https://example.com/s19",
+      "gender": "male",
+      "dateOfBirth": "2013-02-17",
+      "classIds": [
+        "c11",
+        "c12"
+      ],
+      "parentIds": [
+        "p28",
+        "p29"
+      ],
+      "admissionDate": "2019-05-21",
+      "phone": "217-555-8901"
+    },
+    "s50": {
+      "id": "s50",
+      "lastName": "Nelson",
+      "firstName": "Ella",
+      "address": "117 Maple St, Springfield, IL 62701",
+      "email": "s20@example.com",
+      "profileUrl": "https://example.com/s20",
+      "gender": "female",
+      "dateOfBirth": "2011-08-14",
+      "classIds": [
+        "c12"
+      ],
+      "parentIds": [
+        "p30"
+      ],
+      "admissionDate": "2017-11-30",
+      "phone": "217-555-9012"
+    },
+    "s51": {
+      "id": "s51",
+      "lastName": "Reed",
+      "firstName": "David",
+      "address": "118 Pine St, Springfield, IL 62701",
+      "email": "s21@example.com",
+      "profileUrl": "https://example.com/s21",
+      "gender": "male",
+      "dateOfBirth": "2010-06-05",
+      "classIds": [
+        "c13"
+      ],
+      "parentIds": [
+        "p31",
+        "p32"
+      ],
+      "admissionDate": "2016-08-15",
+      "phone": "217-555-1236"
+    },
+    "s52": {
+      "id": "s52",
+      "lastName": "Carter",
+      "firstName": "Madison",
+      "address": "119 Willow St, Springfield, IL 62701",
+      "email": "s22@example.com",
+      "profileUrl": "https://example.com/s22",
+      "gender": "female",
+      "dateOfBirth": "2014-03-25",
+      "classIds": [
+        "c13",
+        "c14"
+      ],
+      "parentIds": [
+        "p33"
+      ],
+      "admissionDate": "2020-04-22",
+      "phone": "217-555-2346"
+    },
+    "s53": {
+      "id": "s53",
+      "lastName": "Mitchell",
+      "firstName": "Alexander",
+      "address": "120 Cedar St, Springfield, IL 62701",
+      "email": "s23@example.com",
+      "profileUrl": "https://example.com/s23",
+      "gender": "male",
+      "dateOfBirth": "2007-07-12",
+      "classIds": [
+        "c14"
+      ],
+      "parentIds": [
+        "p34",
+        "p35"
+      ],
+      "admissionDate": "2012-10-04",
+      "phone": "217-555-3457"
+    },
+    "s54": {
+      "id": "s54",
+      "lastName": "Perez",
+      "firstName": "Chloe",
+      "address": "121 Elm St, Springfield, IL 62701",
+      "email": "s24@example.com",
+      "profileUrl": "https://example.com/s24",
+      "gender": "female",
+      "dateOfBirth": "2009-05-10",
+      "classIds": [
+        "c15"
+      ],
+      "parentIds": [
+        "p36"
+      ],
+      "admissionDate": "2014-01-17",
+      "phone": "217-555-4568"
+    },
+    "s55": {
+      "id": "s55",
+      "lastName": "Adams",
+      "firstName": "Samuel",
+      "address": "122 Birch St, Springfield, IL 62701",
+      "email": "s25@example.com",
+      "profileUrl": "https://example.com/s25",
+      "gender": "male",
+      "dateOfBirth": "2015-10-22",
+      "classIds": [
+        "c15"
+      ],
+      "parentIds": [
+        "p37",
+        "p38"
+      ],
+      "admissionDate": "2021-02-14",
+      "phone": "217-555-5679"
+    },
+    "s56": {
+      "id": "s56",
+      "lastName": "Roberts",
+      "firstName": "Ella",
+      "address": "123 Oak St, Springfield, IL 62701",
+      "email": "s26@example.com",
+      "profileUrl": "https://example.com/s26",
+      "gender": "female",
+      "dateOfBirth": "2008-12-18",
+      "classIds": [
+        "c16"
+      ],
+      "parentIds": [
+        "p39"
+      ],
+      "admissionDate": "2013-07-21",
+      "phone": "217-555-6780"
+    },
+    "s57": {
+      "id": "s57",
+      "lastName": "Turner",
+      "firstName": "Ryan",
+      "address": "124 Spruce St, Springfield, IL 62701",
+      "email": "s27@example.com",
+      "profileUrl": "https://example.com/s27",
+      "gender": "male",
+      "dateOfBirth": "2013-01-08",
+      "classIds": [
+        "c16",
+        "c17"
+      ],
+      "parentIds": [
+        "p40",
+        "p41"
+      ],
+      "admissionDate": "2019-06-08",
+      "phone": "217-555-7891"
+    },
+    "s58": {
+      "id": "s58",
+      "lastName": "Phillips",
+      "firstName": "Natalie",
+      "address": "125 Chestnut St, Springfield, IL 62701",
+      "email": "s28@example.com",
+      "profileUrl": "https://example.com/s28",
+      "gender": "female",
+      "dateOfBirth": "2011-02-05",
+      "classIds": [
+        "c17"
+      ],
+      "parentIds": [
+        "p42"
+      ],
+      "admissionDate": "2017-12-11",
+      "phone": "217-555-8902"
+    },
+    "s59": {
+      "id": "s59",
+      "lastName": "Campbell",
+      "firstName": "Christopher",
+      "address": "126 Poplar St, Springfield, IL 62701",
+      "email": "s29@example.com",
+      "profileUrl": "https://example.com/s29",
+      "gender": "male",
+      "dateOfBirth": "2009-09-25",
+      "classIds": [
+        "c18"
+      ],
+      "parentIds": [
+        "p43",
+        "p44"
+      ],
+      "admissionDate": "2015-03-10",
+      "phone": "217-555-9013"
+    },
+    "s60": {
+      "id": "s60",
+      "lastName": "Parker",
+      "firstName": "Samantha",
+      "address": "127 Sycamore St, Springfield, IL 62701",
+      "email": "s30@example.com",
+      "profileUrl": "https://example.com/s30",
+      "gender": "female",
+      "dateOfBirth": "2010-11-19",
+      "classIds": [
+        "c18"
+      ],
+      "parentIds": [
+        "p45"
+      ],
+      "admissionDate": "2016-08-27",
+      "phone": "217-555-1237"
+    },
+    "s1729662648499": {
+      "id": "s1729662648499",
+      "lastName": "",
+      "firstName": "",
+      "address": "",
+      "email": "",
+      "profileUrl": "",
+      "gender": "",
+      "dateOfBirth": "",
+      "classIds": [],
+      "parentIds": [],
+      "admissionDate": "",
+      "phone": ""
     }
   }
 }
