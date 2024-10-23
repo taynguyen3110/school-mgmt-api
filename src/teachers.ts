@@ -4,6 +4,13 @@ import z from "zod";
 import { TeacherUpdateData, TeacherUpdateDataSchema } from "./types";
 
 export const teacherController: CreateServerOptions['beforeRoute'] = (app) => {
+    app.get('/api/teachers/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(teachersQuerySchema).middleware('query'), (req, res) => {
+        // get teachers
+        const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as TeachersQuery;
+        const list = teacher_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
+        res.json(list);
+        res.status(200);
+    });
     app.get('/api/teachers/', HttpCallAuthentication().middleware(), HttpCallValidation(teachersQuerySchema).middleware('query'), (req, res) => {
         // get teachers
         const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as TeachersQuery;

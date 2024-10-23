@@ -19,10 +19,13 @@ export type User = z.infer<typeof UserSchema>;
 export const ClassSchema = z.object({
     id: z.string(),
     name: z.string(),
-    students: z.array(z.string()),
+    studentIds: z.array(z.string()),
 });
 
 export type ClassType = z.infer<typeof ClassSchema>;
+export type ClassTypeFull = ClassType & { students: Student[] };
+export const ClassUpdateDataSchema = ClassSchema.omit({ id: true });
+export type ClassUpdateData = z.infer<typeof ClassUpdateDataSchema>;
 
 export const SubjectSchema = z.object({
     id: z.string(),

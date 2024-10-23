@@ -346,6 +346,7 @@
       "email": "p2@example.com",
       "phone": "217-555-1235",
       "profileUrl": "https://example.com/p2"
+<<<<<<< HEAD
     },
     "p3": {
       "id": "p3",
@@ -733,6 +734,8 @@
       "email": "p45@example.com",
       "phone": "217-555-1278",
       "profileUrl": "https://example.com/p45"
+=======
+>>>>>>> 348ba73da2cb5140281ad0f3957bec3e1e0f4d0b
     }
   },
   "students": {
