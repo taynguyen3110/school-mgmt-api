@@ -14,6 +14,9 @@ export const UserSchema = z.object({
 export const UserUpdateDataSchema = UserSchema.omit({ id: true, password: true });
 export type UserUpdateData = z.infer<typeof UserUpdateDataSchema>;
 
+export const UserUpdatePasswordSchema = UserSchema.pick({ password: true });
+export type UserUpdatePasswordData = z.infer<typeof UserUpdatePasswordSchema>;
+
 export type User = z.infer<typeof UserSchema>;
 
 export const ClassSchema = z.object({

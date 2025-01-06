@@ -8,7 +8,7 @@
       "password": "password01",
       "role": "admin",
       "isBlocked": false,
-      "profileUrl": "https://example.com/u1"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     }
   },
   "classes": {
@@ -16,89 +16,186 @@
       "id": "c1",
       "name": "Class 1",
       "studentIds": [
-        "s1"
+        "s1",
+        "s2",
+        "s3",
+        "s4"
       ]
     },
     "c2": {
       "id": "c2",
-      "name": "Class 2"
+      "name": "Class 2",
+      "studentIds": [
+        "s5",
+        "s6",
+        "s7",
+        "s8"
+      ]
     },
     "c3": {
       "id": "c3",
-      "name": "Class 3"
+      "name": "Class 3",
+      "studentIds": [
+        "s9",
+        "s10",
+        "s11",
+        "s12"
+      ]
     },
     "c4": {
       "id": "c4",
-      "name": "Class 4"
+      "name": "Class 4",
+      "studentIds": [
+        "s13",
+        "s15"
+      ]
     },
     "c5": {
       "id": "c5",
-      "name": "Class 5"
+      "name": "Class 5",
+      "studentIds": [
+        "s17",
+        "s18",
+        "s19",
+        "s20"
+      ]
     },
     "c6": {
       "id": "c6",
-      "name": "Class 6"
+      "name": "Class 6",
+      "studentIds": [
+        "s21",
+        "s22",
+        "s23",
+        "s24"
+      ]
     },
     "c7": {
       "id": "c7",
-      "name": "Class 7"
+      "name": "Class 7",
+      "studentIds": [
+        "s25",
+        "s26",
+        "s27",
+        "s28"
+      ]
     },
     "c8": {
       "id": "c8",
-      "name": "Class 8"
+      "name": "Class 8",
+      "studentIds": [
+        "s29",
+        "s30",
+        "s31",
+        "s32"
+      ]
     },
     "c9": {
       "id": "c9",
-      "name": "Class 9"
+      "name": "Class 9",
+      "studentIds": [
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ]
     },
     "c10": {
       "id": "c10",
-      "name": "Class 10"
+      "name": "Class 10",
+      "studentIds": [
+        "s37",
+        "s38",
+        "s39",
+        "s40"
+      ]
     },
     "c11": {
       "id": "c11",
-      "name": "Class 11"
+      "name": "Class 11",
+      "studentIds": [
+        "s41",
+        "s42",
+        "s43",
+        "s44"
+      ]
     },
     "c12": {
       "id": "c12",
-      "name": "Class 12"
+      "name": "Class 12",
+      "studentIds": [
+        "s45",
+        "s46",
+        "s47",
+        "s48"
+      ]
     },
     "c13": {
       "id": "c13",
-      "name": "Class 13"
+      "name": "Class 13",
+      "studentIds": [
+        "s49",
+        "s50",
+        "s51",
+        "s52"
+      ]
     },
     "c14": {
       "id": "c14",
-      "name": "Class 14"
+      "name": "Class 14",
+      "studentIds": [
+        "s53",
+        "s54",
+        "s55"
+      ]
     },
     "c15": {
       "id": "c15",
-      "name": "Class 15"
+      "name": "Class 15",
+      "studentIds": [
+        "s56",
+        "s57",
+        "s58"
+      ]
     },
     "c16": {
       "id": "c16",
-      "name": "Class 16"
+      "name": "Class 16",
+      "studentIds": [
+        "s59",
+        "s60"
+      ]
     },
     "c17": {
       "id": "c17",
-      "name": "Class 17"
+      "name": "Class 17",
+      "studentIds": [
+        "s1",
+        "s2",
+        "s3"
+      ]
     },
     "c18": {
       "id": "c18",
-      "name": "Class 18"
+      "name": "Class 18",
+      "studentIds": [
+        "s4",
+        "s5",
+        "s6"
+      ]
     }
   },
   "subjects": {
     "s1": {
       "id": "s1",
       "name": "Math",
+      "teacherId": "t1",
       "classId": "c1",
       "daysOfWeek": [
         "monday",
         "wednesday",
         "friday"
-      ],
-      "teacherId": "t1"
+      ]
     },
     "s2": {
       "id": "s2",
@@ -123,12 +220,12 @@
     "s4": {
       "id": "s4",
       "name": "History",
+      "teacherId": "t4",
       "classId": "c4",
       "daysOfWeek": [
         "tuesday",
         "friday"
-      ],
-      "teacherId": "t4"
+      ]
     },
     "s5": {
       "id": "s5",
@@ -280,7 +377,7 @@
       "email": "t1@example.com",
       "gender": "male",
       "phone": "217-555-1234",
-      "profileUrl": "https://example.com/t1",
+      "profileUrl": "http://localhost:3001/photos/student(58).jpg",
       "admissionDate": "2010-01-01"
     },
     "t2": {
@@ -291,7 +388,7 @@
       "email": "t2@example.com",
       "gender": "female",
       "phone": "217-555-1235",
-      "profileUrl": "https://example.com/t2",
+      "profileUrl": "http://localhost:3001/photos/student(58).jpg",
       "admissionDate": "2012-03-05"
     },
     "t3": {
@@ -302,8 +399,8 @@
       "email": "t3@example.com",
       "gender": "male",
       "phone": "217-555-1236",
-      "profileUrl": "https://example.com/t3",
-      "admissionDate": "2015-08-12"
+      "profileUrl": "http://localhost:3001/photos/student(58).jpg",
+      "admissionDate": "2024-12-18T13:00:00.000Z"
     },
     "t4": {
       "id": "t4",
@@ -313,7 +410,7 @@
       "email": "t4@example.com",
       "gender": "female",
       "phone": "217-555-1237",
-      "profileUrl": "https://example.com/t4",
+      "profileUrl": "http://localhost:3001/photos/student(58).jpg",
       "admissionDate": "2018-01-20"
     },
     "t5": {
@@ -324,8 +421,30 @@
       "email": "t5@example.com",
       "gender": "male",
       "phone": "217-555-1238",
-      "profileUrl": "https://example.com/t5",
+      "profileUrl": "http://localhost:3001/photos/student(58).jpg",
       "admissionDate": "2020-09-15"
+    },
+    "s1733792434836": {
+      "id": "s1733792434836",
+      "lastName": "Nguyen",
+      "firstName": "Tay",
+      "address": "1",
+      "email": "taynguyen3110@gmail.com",
+      "gender": "male",
+      "phone": "0906939189",
+      "profileUrl": "http://localhost:3001/photos/s1733792433962.jpeg",
+      "admissionDate": "2024-12-17T13:00:00.000Z"
+    },
+    "s1733792469850": {
+      "id": "s1733792469850",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "1",
+      "email": "taynguyen3110@gmail.com",
+      "gender": "male",
+      "phone": "0906939189",
+      "profileUrl": "http://localhost:3001/photos/profile-picture.jpg",
+      "admissionDate": "2024-12-19T13:00:00.000Z"
     }
   },
   "parents": {
@@ -336,7 +455,7 @@
       "address": "123 Main St, Springfield, IL 62701",
       "email": "p1@example.com",
       "phone": "217-555-1234",
-      "profileUrl": "https://example.com/p1"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p2": {
       "id": "p2",
@@ -345,8 +464,7 @@
       "address": "123 Main St, Springfield, IL 62701",
       "email": "p2@example.com",
       "phone": "217-555-1235",
-      "profileUrl": "https://example.com/p2"
-<<<<<<< HEAD
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p3": {
       "id": "p3",
@@ -355,7 +473,7 @@
       "address": "124 Maple St, Springfield, IL 62701",
       "email": "p3@example.com",
       "phone": "217-555-1236",
-      "profileUrl": "https://example.com/p3"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p4": {
       "id": "p4",
@@ -364,7 +482,7 @@
       "address": "124 Maple St, Springfield, IL 62701",
       "email": "p4@example.com",
       "phone": "217-555-1237",
-      "profileUrl": "https://example.com/p4"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p5": {
       "id": "p5",
@@ -373,7 +491,7 @@
       "address": "125 Oak St, Springfield, IL 62701",
       "email": "p5@example.com",
       "phone": "217-555-1238",
-      "profileUrl": "https://example.com/p5"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p6": {
       "id": "p6",
@@ -382,7 +500,7 @@
       "address": "125 Oak St, Springfield, IL 62701",
       "email": "p6@example.com",
       "phone": "217-555-1239",
-      "profileUrl": "https://example.com/p6"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p7": {
       "id": "p7",
@@ -391,7 +509,7 @@
       "address": "126 Birch St, Springfield, IL 62701",
       "email": "p7@example.com",
       "phone": "217-555-1240",
-      "profileUrl": "https://example.com/p7"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p8": {
       "id": "p8",
@@ -400,7 +518,7 @@
       "address": "126 Birch St, Springfield, IL 62701",
       "email": "p8@example.com",
       "phone": "217-555-1241",
-      "profileUrl": "https://example.com/p8"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p9": {
       "id": "p9",
@@ -409,7 +527,7 @@
       "address": "127 Pine St, Springfield, IL 62701",
       "email": "p9@example.com",
       "phone": "217-555-1242",
-      "profileUrl": "https://example.com/p9"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p10": {
       "id": "p10",
@@ -418,7 +536,7 @@
       "address": "127 Pine St, Springfield, IL 62701",
       "email": "p10@example.com",
       "phone": "217-555-1243",
-      "profileUrl": "https://example.com/p10"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p11": {
       "id": "p11",
@@ -427,7 +545,7 @@
       "address": "128 Willow St, Springfield, IL 62701",
       "email": "p11@example.com",
       "phone": "217-555-1244",
-      "profileUrl": "https://example.com/p11"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p12": {
       "id": "p12",
@@ -436,7 +554,7 @@
       "address": "128 Willow St, Springfield, IL 62701",
       "email": "p12@example.com",
       "phone": "217-555-1245",
-      "profileUrl": "https://example.com/p12"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p13": {
       "id": "p13",
@@ -445,7 +563,7 @@
       "address": "129 Cedar St, Springfield, IL 62701",
       "email": "p13@example.com",
       "phone": "217-555-1246",
-      "profileUrl": "https://example.com/p13"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p14": {
       "id": "p14",
@@ -454,7 +572,7 @@
       "address": "129 Cedar St, Springfield, IL 62701",
       "email": "p14@example.com",
       "phone": "217-555-1247",
-      "profileUrl": "https://example.com/p14"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p15": {
       "id": "p15",
@@ -463,7 +581,7 @@
       "address": "130 Elm St, Springfield, IL 62701",
       "email": "p15@example.com",
       "phone": "217-555-1248",
-      "profileUrl": "https://example.com/p15"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p16": {
       "id": "p16",
@@ -472,7 +590,7 @@
       "address": "130 Elm St, Springfield, IL 62701",
       "email": "p16@example.com",
       "phone": "217-555-1249",
-      "profileUrl": "https://example.com/p16"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p17": {
       "id": "p17",
@@ -481,7 +599,7 @@
       "address": "131 Walnut St, Springfield, IL 62701",
       "email": "p17@example.com",
       "phone": "217-555-1250",
-      "profileUrl": "https://example.com/p17"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p18": {
       "id": "p18",
@@ -490,7 +608,7 @@
       "address": "131 Walnut St, Springfield, IL 62701",
       "email": "p18@example.com",
       "phone": "217-555-1251",
-      "profileUrl": "https://example.com/p18"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p19": {
       "id": "p19",
@@ -499,7 +617,7 @@
       "address": "132 Magnolia St, Springfield, IL 62701",
       "email": "p19@example.com",
       "phone": "217-555-1252",
-      "profileUrl": "https://example.com/p19"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p20": {
       "id": "p20",
@@ -508,7 +626,7 @@
       "address": "132 Magnolia St, Springfield, IL 62701",
       "email": "p20@example.com",
       "phone": "217-555-1253",
-      "profileUrl": "https://example.com/p20"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p21": {
       "id": "p21",
@@ -517,7 +635,7 @@
       "address": "133 Sycamore St, Springfield, IL 62701",
       "email": "p21@example.com",
       "phone": "217-555-1254",
-      "profileUrl": "https://example.com/p21"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p22": {
       "id": "p22",
@@ -526,7 +644,7 @@
       "address": "133 Sycamore St, Springfield, IL 62701",
       "email": "p22@example.com",
       "phone": "217-555-1255",
-      "profileUrl": "https://example.com/p22"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p23": {
       "id": "p23",
@@ -535,7 +653,7 @@
       "address": "134 Aspen St, Springfield, IL 62701",
       "email": "p23@example.com",
       "phone": "217-555-1256",
-      "profileUrl": "https://example.com/p23"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p24": {
       "id": "p24",
@@ -544,7 +662,7 @@
       "address": "134 Aspen St, Springfield, IL 62701",
       "email": "p24@example.com",
       "phone": "217-555-1257",
-      "profileUrl": "https://example.com/p24"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p25": {
       "id": "p25",
@@ -553,7 +671,7 @@
       "address": "135 Cypress St, Springfield, IL 62701",
       "email": "p25@example.com",
       "phone": "217-555-1258",
-      "profileUrl": "https://example.com/p25"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p26": {
       "id": "p26",
@@ -562,7 +680,7 @@
       "address": "135 Cypress St, Springfield, IL 62701",
       "email": "p26@example.com",
       "phone": "217-555-1259",
-      "profileUrl": "https://example.com/p26"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p27": {
       "id": "p27",
@@ -571,7 +689,7 @@
       "address": "136 Redwood St, Springfield, IL 62701",
       "email": "p27@example.com",
       "phone": "217-555-1260",
-      "profileUrl": "https://example.com/p27"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p28": {
       "id": "p28",
@@ -580,7 +698,7 @@
       "address": "136 Redwood St, Springfield, IL 62701",
       "email": "p28@example.com",
       "phone": "217-555-1261",
-      "profileUrl": "https://example.com/p28"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p29": {
       "id": "p29",
@@ -589,7 +707,7 @@
       "address": "137 Chestnut St, Springfield, IL 62701",
       "email": "p29@example.com",
       "phone": "217-555-1262",
-      "profileUrl": "https://example.com/p29"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p30": {
       "id": "p30",
@@ -598,7 +716,7 @@
       "address": "137 Chestnut St, Springfield, IL 62701",
       "email": "p30@example.com",
       "phone": "217-555-1263",
-      "profileUrl": "https://example.com/p30"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p31": {
       "id": "p31",
@@ -607,7 +725,7 @@
       "address": "138 Spruce St, Springfield, IL 62701",
       "email": "p31@example.com",
       "phone": "217-555-1264",
-      "profileUrl": "https://example.com/p31"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p32": {
       "id": "p32",
@@ -616,7 +734,7 @@
       "address": "138 Spruce St, Springfield, IL 62701",
       "email": "p32@example.com",
       "phone": "217-555-1265",
-      "profileUrl": "https://example.com/p32"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p33": {
       "id": "p33",
@@ -625,7 +743,7 @@
       "address": "139 Alder St, Springfield, IL 62701",
       "email": "p33@example.com",
       "phone": "217-555-1266",
-      "profileUrl": "https://example.com/p33"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p34": {
       "id": "p34",
@@ -634,7 +752,7 @@
       "address": "139 Alder St, Springfield, IL 62701",
       "email": "p34@example.com",
       "phone": "217-555-1267",
-      "profileUrl": "https://example.com/p34"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p35": {
       "id": "p35",
@@ -643,7 +761,7 @@
       "address": "140 Willow St, Springfield, IL 62701",
       "email": "p35@example.com",
       "phone": "217-555-1268",
-      "profileUrl": "https://example.com/p35"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p36": {
       "id": "p36",
@@ -652,7 +770,7 @@
       "address": "140 Willow St, Springfield, IL 62701",
       "email": "p36@example.com",
       "phone": "217-555-1269",
-      "profileUrl": "https://example.com/p36"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p37": {
       "id": "p37",
@@ -661,7 +779,7 @@
       "address": "141 Poplar St, Springfield, IL 62701",
       "email": "p37@example.com",
       "phone": "217-555-1270",
-      "profileUrl": "https://example.com/p37"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p38": {
       "id": "p38",
@@ -670,7 +788,7 @@
       "address": "141 Poplar St, Springfield, IL 62701",
       "email": "p38@example.com",
       "phone": "217-555-1271",
-      "profileUrl": "https://example.com/p38"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p39": {
       "id": "p39",
@@ -679,7 +797,7 @@
       "address": "142 Maple St, Springfield, IL 62701",
       "email": "p39@example.com",
       "phone": "217-555-1272",
-      "profileUrl": "https://example.com/p39"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p40": {
       "id": "p40",
@@ -688,7 +806,7 @@
       "address": "142 Maple St, Springfield, IL 62701",
       "email": "p40@example.com",
       "phone": "217-555-1273",
-      "profileUrl": "https://example.com/p40"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p41": {
       "id": "p41",
@@ -697,7 +815,7 @@
       "address": "143 Birch St, Springfield, IL 62701",
       "email": "p41@example.com",
       "phone": "217-555-1274",
-      "profileUrl": "https://example.com/p41"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p42": {
       "id": "p42",
@@ -706,7 +824,7 @@
       "address": "143 Birch St, Springfield, IL 62701",
       "email": "p42@example.com",
       "phone": "217-555-1275",
-      "profileUrl": "https://example.com/p42"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p43": {
       "id": "p43",
@@ -715,7 +833,7 @@
       "address": "144 Elm St, Springfield, IL 62701",
       "email": "p43@example.com",
       "phone": "217-555-1276",
-      "profileUrl": "https://example.com/p43"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p44": {
       "id": "p44",
@@ -724,7 +842,7 @@
       "address": "144 Elm St, Springfield, IL 62701",
       "email": "p44@example.com",
       "phone": "217-555-1277",
-      "profileUrl": "https://example.com/p44"
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
     },
     "p45": {
       "id": "p45",
@@ -733,9 +851,34 @@
       "address": "145 Oak St, Springfield, IL 62701",
       "email": "p45@example.com",
       "phone": "217-555-1278",
-      "profileUrl": "https://example.com/p45"
-=======
->>>>>>> 348ba73da2cb5140281ad0f3957bec3e1e0f4d0b
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg"
+    },
+    "s1732791087359": {
+      "id": "s1732791087359",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "171 đường số 6, P. Bình Trị Đông B, Q. Bình Tân1111",
+      "email": "taynguyen3110@gmail.com111111",
+      "phone": "090693918911111",
+      "profileUrl": "http://localhost:3001/photos/s1732791086630.jpeg"
+    },
+    "s1732791281446": {
+      "id": "s1732791281446",
+      "lastName": "Tâyzxc",
+      "firstName": "Nguyễnzxc",
+      "address": "171 đường số 6, P. Bình Trị Đông B, Q. Bình Tând",
+      "email": "taynguyen3110@gmail.com",
+      "phone": "0906939189",
+      "profileUrl": "http://localhost:3001/photos/s1733790239174.jpeg"
+    },
+    "s1733792491093": {
+      "id": "s1733792491093",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "2",
+      "email": "taynguyen3110@gmail.com",
+      "phone": "0906939189",
+      "profileUrl": "http://localhost:3001/photos/profile-picture.jpg"
     }
   },
   "students": {
@@ -745,7 +888,7 @@
       "firstName": "Jane",
       "address": "123 Main St, Springfield, IL 62701",
       "email": "s1@example.com",
-      "profileUrl": "https://example.com/s1",
+      "profileUrl": "http://localhost:3001/photos/student(1).jpg",
       "gender": "male",
       "dateOfBirth": "2005-01-01",
       "classIds": [
@@ -753,7 +896,10 @@
       ],
       "parentIds": [
         "p1",
-        "p2"
+        "p2",
+        "s1732791281446",
+        "s1732791281446",
+        "s1732791281446"
       ],
       "admissionDate": "2010-01-01",
       "phone": "217-555-1234"
@@ -764,15 +910,14 @@
       "firstName": "Emily",
       "address": "456 Elm St, Springfield, IL 62701",
       "email": "s2@example.com",
-      "profileUrl": "https://example.com/s2",
+      "profileUrl": "http://localhost:3001/photos/s1733719512869.jpeg",
       "gender": "female",
       "dateOfBirth": "2006-03-15",
       "classIds": [
         "c1"
       ],
       "parentIds": [
-        "p3",
-        "p4"
+        "p3"
       ],
       "admissionDate": "2011-09-05",
       "phone": "217-555-5678"
@@ -783,7 +928,7 @@
       "firstName": "Michael",
       "address": "789 Oak St, Springfield, IL 62701",
       "email": "s3@example.com",
-      "profileUrl": "https://example.com/s3",
+      "profileUrl": "http://localhost:3001/photos/student(3).jpg",
       "gender": "male",
       "dateOfBirth": "2007-05-22",
       "classIds": [
@@ -801,7 +946,7 @@
       "firstName": "Sophia",
       "address": "101 Pine St, Springfield, IL 62701",
       "email": "s4@example.com",
-      "profileUrl": "https://example.com/s4",
+      "profileUrl": "http://localhost:3001/photos/student(4).jpg",
       "gender": "female",
       "dateOfBirth": "2008-11-30",
       "classIds": [
@@ -815,31 +960,13 @@
       "admissionDate": "2013-02-14",
       "phone": "217-555-2345"
     },
-    "s5": {
-      "id": "s5",
-      "lastName": "Taylor",
-      "firstName": "Liam",
-      "address": "102 Maple St, Springfield, IL 62701",
-      "email": "s5@example.com",
-      "profileUrl": "https://example.com/s5",
-      "gender": "male",
-      "dateOfBirth": "2009-09-09",
-      "classIds": [
-        "c3"
-      ],
-      "parentIds": [
-        "p8"
-      ],
-      "admissionDate": "2014-05-01",
-      "phone": "217-555-3456"
-    },
     "s6": {
       "id": "s6",
       "lastName": "Davis",
       "firstName": "Olivia",
       "address": "103 Birch St, Springfield, IL 62701",
       "email": "s6@example.com",
-      "profileUrl": "https://example.com/s6",
+      "profileUrl": "http://localhost:3001/photos/student(6).jpg",
       "gender": "female",
       "dateOfBirth": "2010-07-19",
       "classIds": [
@@ -847,7 +974,8 @@
       ],
       "parentIds": [
         "p9",
-        "p10"
+        "p10",
+        "s1732791281446"
       ],
       "admissionDate": "2015-11-23",
       "phone": "217-555-4567"
@@ -858,7 +986,7 @@
       "firstName": "Lucas",
       "address": "104 Cedar St, Springfield, IL 62701",
       "email": "s7@example.com",
-      "profileUrl": "https://example.com/s7",
+      "profileUrl": "http://localhost:3001/photos/student(7).jpg",
       "gender": "male",
       "dateOfBirth": "2011-04-12",
       "classIds": [
@@ -878,7 +1006,7 @@
       "firstName": "Ava",
       "address": "105 Walnut St, Springfield, IL 62701",
       "email": "s8@example.com",
-      "profileUrl": "https://example.com/s8",
+      "profileUrl": "http://localhost:3001/photos/student(8).jpg",
       "gender": "female",
       "dateOfBirth": "2012-01-22",
       "classIds": [
@@ -896,8 +1024,8 @@
       "firstName": "Ethan",
       "address": "106 Spruce St, Springfield, IL 62701",
       "email": "s9@example.com",
-      "profileUrl": "https://example.com/s9",
-      "gender": "male",
+      "profileUrl": "http://localhost:3001/photos/student(9).jpg",
+      "gender": "female",
       "dateOfBirth": "2013-08-05",
       "classIds": [
         "c6"
@@ -915,7 +1043,7 @@
       "firstName": "Mia",
       "address": "107 Chestnut St, Springfield, IL 62701",
       "email": "s10@example.com",
-      "profileUrl": "https://example.com/s10",
+      "profileUrl": "http://localhost:3001/photos/student(10).jpg",
       "gender": "female",
       "dateOfBirth": "2014-06-14",
       "classIds": [
@@ -934,7 +1062,7 @@
       "firstName": "Daniel",
       "address": "108 Willow St, Springfield, IL 62701",
       "email": "s11@example.com",
-      "profileUrl": "https://example.com/s11",
+      "profileUrl": "http://localhost:3001/photos/student(11).jpg",
       "gender": "male",
       "dateOfBirth": "2015-02-28",
       "classIds": [
@@ -953,7 +1081,7 @@
       "firstName": "Isabella",
       "address": "109 Cypress St, Springfield, IL 62701",
       "email": "s12@example.com",
-      "profileUrl": "https://example.com/s12",
+      "profileUrl": "http://localhost:3001/photos/student(12).jpg",
       "gender": "female",
       "dateOfBirth": "2016-12-13",
       "classIds": [
@@ -971,7 +1099,7 @@
       "firstName": "Benjamin",
       "address": "110 Aspen St, Springfield, IL 62701",
       "email": "s13@example.com",
-      "profileUrl": "https://example.com/s13",
+      "profileUrl": "http://localhost:3001/photos/student(13).jpg",
       "gender": "male",
       "dateOfBirth": "2012-10-03",
       "classIds": [
@@ -989,7 +1117,7 @@
       "firstName": "Zoe",
       "address": "111 Hickory St, Springfield, IL 62701",
       "email": "s14@example.com",
-      "profileUrl": "https://example.com/s14",
+      "profileUrl": "http://localhost:3001/photos/student(14).jpg",
       "gender": "female",
       "dateOfBirth": "2011-03-07",
       "classIds": [
@@ -1007,7 +1135,7 @@
       "firstName": "Elijah",
       "address": "112 Poplar St, Springfield, IL 62701",
       "email": "s15@example.com",
-      "profileUrl": "https://example.com/s15",
+      "profileUrl": "http://localhost:3001/photos/student(15).jpg",
       "gender": "male",
       "dateOfBirth": "2010-09-21",
       "classIds": [
@@ -1026,7 +1154,7 @@
       "firstName": "Grace",
       "address": "113 Sycamore St, Springfield, IL 62701",
       "email": "s16@example.com",
-      "profileUrl": "https://example.com/s16",
+      "profileUrl": "http://localhost:3001/photos/student(16).jpg",
       "gender": "female",
       "dateOfBirth": "2009-05-11",
       "classIds": [
@@ -1044,8 +1172,8 @@
       "firstName": "James",
       "address": "114 Redwood St, Springfield, IL 62701",
       "email": "s17@example.com",
-      "profileUrl": "https://example.com/s17",
-      "gender": "male",
+      "profileUrl": "http://localhost:3001/photos/student(17).jpg",
+      "gender": "female",
       "dateOfBirth": "2008-04-30",
       "classIds": [
         "c10"
@@ -1063,7 +1191,7 @@
       "firstName": "Hannah",
       "address": "115 Magnolia St, Springfield, IL 62701",
       "email": "s18@example.com",
-      "profileUrl": "https://example.com/s18",
+      "profileUrl": "http://localhost:3001/photos/student(18).jpg",
       "gender": "female",
       "dateOfBirth": "2012-11-20",
       "classIds": [
@@ -1081,7 +1209,7 @@
       "firstName": "Aiden",
       "address": "116 Cherry St, Springfield, IL 62701",
       "email": "s19@example.com",
-      "profileUrl": "https://example.com/s19",
+      "profileUrl": "http://localhost:3001/photos/student(19).jpg",
       "gender": "male",
       "dateOfBirth": "2013-02-17",
       "classIds": [
@@ -1101,7 +1229,7 @@
       "firstName": "Ella",
       "address": "117 Maple St, Springfield, IL 62701",
       "email": "s20@example.com",
-      "profileUrl": "https://example.com/s20",
+      "profileUrl": "http://localhost:3001/photos/student(20).jpg",
       "gender": "female",
       "dateOfBirth": "2011-08-14",
       "classIds": [
@@ -1119,7 +1247,7 @@
       "firstName": "David",
       "address": "118 Pine St, Springfield, IL 62701",
       "email": "s21@example.com",
-      "profileUrl": "https://example.com/s21",
+      "profileUrl": "http://localhost:3001/photos/student(21).jpg",
       "gender": "male",
       "dateOfBirth": "2010-06-05",
       "classIds": [
@@ -1138,7 +1266,7 @@
       "firstName": "Madison",
       "address": "119 Willow St, Springfield, IL 62701",
       "email": "s22@example.com",
-      "profileUrl": "https://example.com/s22",
+      "profileUrl": "http://localhost:3001/photos/student(22).jpg",
       "gender": "female",
       "dateOfBirth": "2014-03-25",
       "classIds": [
@@ -1157,7 +1285,7 @@
       "firstName": "Alexander",
       "address": "120 Cedar St, Springfield, IL 62701",
       "email": "s23@example.com",
-      "profileUrl": "https://example.com/s23",
+      "profileUrl": "http://localhost:3001/photos/student(23).jpg",
       "gender": "male",
       "dateOfBirth": "2007-07-12",
       "classIds": [
@@ -1176,7 +1304,7 @@
       "firstName": "Chloe",
       "address": "121 Elm St, Springfield, IL 62701",
       "email": "s24@example.com",
-      "profileUrl": "https://example.com/s24",
+      "profileUrl": "http://localhost:3001/photos/student(24).jpg",
       "gender": "female",
       "dateOfBirth": "2009-05-10",
       "classIds": [
@@ -1194,7 +1322,7 @@
       "firstName": "Samuel",
       "address": "122 Birch St, Springfield, IL 62701",
       "email": "s25@example.com",
-      "profileUrl": "https://example.com/s25",
+      "profileUrl": "http://localhost:3001/photos/student(25).jpg",
       "gender": "male",
       "dateOfBirth": "2015-10-22",
       "classIds": [
@@ -1213,7 +1341,7 @@
       "firstName": "Ella",
       "address": "123 Oak St, Springfield, IL 62701",
       "email": "s26@example.com",
-      "profileUrl": "https://example.com/s26",
+      "profileUrl": "http://localhost:3001/photos/student(26).jpg",
       "gender": "female",
       "dateOfBirth": "2008-12-18",
       "classIds": [
@@ -1231,7 +1359,7 @@
       "firstName": "Ryan",
       "address": "124 Spruce St, Springfield, IL 62701",
       "email": "s27@example.com",
-      "profileUrl": "https://example.com/s27",
+      "profileUrl": "http://localhost:3001/photos/student(27).jpg",
       "gender": "male",
       "dateOfBirth": "2013-01-08",
       "classIds": [
@@ -1251,7 +1379,7 @@
       "firstName": "Natalie",
       "address": "125 Chestnut St, Springfield, IL 62701",
       "email": "s28@example.com",
-      "profileUrl": "https://example.com/s28",
+      "profileUrl": "http://localhost:3001/photos/student(28).jpg",
       "gender": "female",
       "dateOfBirth": "2011-02-05",
       "classIds": [
@@ -1269,7 +1397,7 @@
       "firstName": "Christopher",
       "address": "126 Poplar St, Springfield, IL 62701",
       "email": "s29@example.com",
-      "profileUrl": "https://example.com/s29",
+      "profileUrl": "http://localhost:3001/photos/student(29).jpg",
       "gender": "male",
       "dateOfBirth": "2009-09-25",
       "classIds": [
@@ -1277,6 +1405,7 @@
       ],
       "parentIds": [
         "p43",
+        "p44",
         "p44"
       ],
       "admissionDate": "2015-03-10",
@@ -1288,7 +1417,7 @@
       "firstName": "Samantha",
       "address": "127 Sycamore St, Springfield, IL 62701",
       "email": "s30@example.com",
-      "profileUrl": "https://example.com/s30",
+      "profileUrl": "http://localhost:3001/photos/student(30).jpg",
       "gender": "female",
       "dateOfBirth": "2010-11-19",
       "classIds": [
@@ -1306,7 +1435,7 @@
       "firstName": "Jane",
       "address": "123 Main St, Springfield, IL 62701",
       "email": "s1@example.com",
-      "profileUrl": "https://example.com/s1",
+      "profileUrl": "http://localhost:3001/photos/student(31).jpg",
       "gender": "male",
       "dateOfBirth": "2005-01-01",
       "classIds": [
@@ -1325,7 +1454,7 @@
       "firstName": "Emily",
       "address": "456 Elm St, Springfield, IL 62701",
       "email": "s2@example.com",
-      "profileUrl": "https://example.com/s2",
+      "profileUrl": "http://localhost:3001/photos/student(32).jpg",
       "gender": "female",
       "dateOfBirth": "2006-03-15",
       "classIds": [
@@ -1344,7 +1473,7 @@
       "firstName": "Michael",
       "address": "789 Oak St, Springfield, IL 62701",
       "email": "s3@example.com",
-      "profileUrl": "https://example.com/s3",
+      "profileUrl": "http://localhost:3001/photos/student(33).jpg",
       "gender": "male",
       "dateOfBirth": "2007-05-22",
       "classIds": [
@@ -1362,7 +1491,7 @@
       "firstName": "Sophia",
       "address": "101 Pine St, Springfield, IL 62701",
       "email": "s4@example.com",
-      "profileUrl": "https://example.com/s4",
+      "profileUrl": "http://localhost:3001/photos/student(34).jpg",
       "gender": "female",
       "dateOfBirth": "2008-11-30",
       "classIds": [
@@ -1382,7 +1511,7 @@
       "firstName": "Liam",
       "address": "102 Maple St, Springfield, IL 62701",
       "email": "s5@example.com",
-      "profileUrl": "https://example.com/s5",
+      "profileUrl": "http://localhost:3001/photos/student(35).jpg",
       "gender": "male",
       "dateOfBirth": "2009-09-09",
       "classIds": [
@@ -1400,7 +1529,7 @@
       "firstName": "Olivia",
       "address": "103 Birch St, Springfield, IL 62701",
       "email": "s6@example.com",
-      "profileUrl": "https://example.com/s6",
+      "profileUrl": "http://localhost:3001/photos/student(36).jpg",
       "gender": "female",
       "dateOfBirth": "2010-07-19",
       "classIds": [
@@ -1419,8 +1548,8 @@
       "firstName": "Lucas",
       "address": "104 Cedar St, Springfield, IL 62701",
       "email": "s7@example.com",
-      "profileUrl": "https://example.com/s7",
-      "gender": "male",
+      "profileUrl": "http://localhost:3001/photos/student(37).jpg",
+      "gender": "female",
       "dateOfBirth": "2011-04-12",
       "classIds": [
         "c4",
@@ -1439,7 +1568,7 @@
       "firstName": "Ava",
       "address": "105 Walnut St, Springfield, IL 62701",
       "email": "s8@example.com",
-      "profileUrl": "https://example.com/s8",
+      "profileUrl": "http://localhost:3001/photos/student(38).jpg",
       "gender": "female",
       "dateOfBirth": "2012-01-22",
       "classIds": [
@@ -1457,7 +1586,7 @@
       "firstName": "Ethan",
       "address": "106 Spruce St, Springfield, IL 62701",
       "email": "s9@example.com",
-      "profileUrl": "https://example.com/s9",
+      "profileUrl": "http://localhost:3001/photos/student(39).jpg",
       "gender": "male",
       "dateOfBirth": "2013-08-05",
       "classIds": [
@@ -1476,7 +1605,7 @@
       "firstName": "Mia",
       "address": "107 Chestnut St, Springfield, IL 62701",
       "email": "s10@example.com",
-      "profileUrl": "https://example.com/s10",
+      "profileUrl": "http://localhost:3001/photos/student(40).jpg",
       "gender": "female",
       "dateOfBirth": "2014-06-14",
       "classIds": [
@@ -1495,7 +1624,7 @@
       "firstName": "Daniel",
       "address": "108 Willow St, Springfield, IL 62701",
       "email": "s11@example.com",
-      "profileUrl": "https://example.com/s11",
+      "profileUrl": "http://localhost:3001/photos/student(41).jpg",
       "gender": "male",
       "dateOfBirth": "2015-02-28",
       "classIds": [
@@ -1514,7 +1643,7 @@
       "firstName": "Isabella",
       "address": "109 Cypress St, Springfield, IL 62701",
       "email": "s12@example.com",
-      "profileUrl": "https://example.com/s12",
+      "profileUrl": "http://localhost:3001/photos/student(42).jpg",
       "gender": "female",
       "dateOfBirth": "2016-12-13",
       "classIds": [
@@ -1532,7 +1661,7 @@
       "firstName": "Benjamin",
       "address": "110 Aspen St, Springfield, IL 62701",
       "email": "s13@example.com",
-      "profileUrl": "https://example.com/s13",
+      "profileUrl": "http://localhost:3001/photos/student(43).jpg",
       "gender": "male",
       "dateOfBirth": "2012-10-03",
       "classIds": [
@@ -1550,7 +1679,7 @@
       "firstName": "Zoe",
       "address": "111 Hickory St, Springfield, IL 62701",
       "email": "s14@example.com",
-      "profileUrl": "https://example.com/s14",
+      "profileUrl": "http://localhost:3001/photos/student(44).jpg",
       "gender": "female",
       "dateOfBirth": "2011-03-07",
       "classIds": [
@@ -1568,7 +1697,7 @@
       "firstName": "Elijah",
       "address": "112 Poplar St, Springfield, IL 62701",
       "email": "s15@example.com",
-      "profileUrl": "https://example.com/s15",
+      "profileUrl": "http://localhost:3001/photos/student(45).jpg",
       "gender": "male",
       "dateOfBirth": "2010-09-21",
       "classIds": [
@@ -1587,7 +1716,7 @@
       "firstName": "Grace",
       "address": "113 Sycamore St, Springfield, IL 62701",
       "email": "s16@example.com",
-      "profileUrl": "https://example.com/s16",
+      "profileUrl": "http://localhost:3001/photos/student(46).jpg",
       "gender": "female",
       "dateOfBirth": "2009-05-11",
       "classIds": [
@@ -1605,7 +1734,7 @@
       "firstName": "James",
       "address": "114 Redwood St, Springfield, IL 62701",
       "email": "s17@example.com",
-      "profileUrl": "https://example.com/s17",
+      "profileUrl": "http://localhost:3001/photos/student(47).jpg",
       "gender": "male",
       "dateOfBirth": "2008-04-30",
       "classIds": [
@@ -1624,7 +1753,7 @@
       "firstName": "Hannah",
       "address": "115 Magnolia St, Springfield, IL 62701",
       "email": "s18@example.com",
-      "profileUrl": "https://example.com/s18",
+      "profileUrl": "http://localhost:3001/photos/student(48).jpg",
       "gender": "female",
       "dateOfBirth": "2012-11-20",
       "classIds": [
@@ -1642,7 +1771,7 @@
       "firstName": "Aiden",
       "address": "116 Cherry St, Springfield, IL 62701",
       "email": "s19@example.com",
-      "profileUrl": "https://example.com/s19",
+      "profileUrl": "http://localhost:3001/photos/student(49).jpg",
       "gender": "male",
       "dateOfBirth": "2013-02-17",
       "classIds": [
@@ -1662,7 +1791,7 @@
       "firstName": "Ella",
       "address": "117 Maple St, Springfield, IL 62701",
       "email": "s20@example.com",
-      "profileUrl": "https://example.com/s20",
+      "profileUrl": "http://localhost:3001/photos/student(50).jpg",
       "gender": "female",
       "dateOfBirth": "2011-08-14",
       "classIds": [
@@ -1680,7 +1809,7 @@
       "firstName": "David",
       "address": "118 Pine St, Springfield, IL 62701",
       "email": "s21@example.com",
-      "profileUrl": "https://example.com/s21",
+      "profileUrl": "http://localhost:3001/photos/student(51).jpg",
       "gender": "male",
       "dateOfBirth": "2010-06-05",
       "classIds": [
@@ -1699,7 +1828,7 @@
       "firstName": "Madison",
       "address": "119 Willow St, Springfield, IL 62701",
       "email": "s22@example.com",
-      "profileUrl": "https://example.com/s22",
+      "profileUrl": "http://localhost:3001/photos/student(52).jpg",
       "gender": "female",
       "dateOfBirth": "2014-03-25",
       "classIds": [
@@ -1718,7 +1847,7 @@
       "firstName": "Alexander",
       "address": "120 Cedar St, Springfield, IL 62701",
       "email": "s23@example.com",
-      "profileUrl": "https://example.com/s23",
+      "profileUrl": "http://localhost:3001/photos/student(53).jpg",
       "gender": "male",
       "dateOfBirth": "2007-07-12",
       "classIds": [
@@ -1737,7 +1866,7 @@
       "firstName": "Chloe",
       "address": "121 Elm St, Springfield, IL 62701",
       "email": "s24@example.com",
-      "profileUrl": "https://example.com/s24",
+      "profileUrl": "http://localhost:3001/photos/student(54).jpg",
       "gender": "female",
       "dateOfBirth": "2009-05-10",
       "classIds": [
@@ -1755,7 +1884,7 @@
       "firstName": "Samuel",
       "address": "122 Birch St, Springfield, IL 62701",
       "email": "s25@example.com",
-      "profileUrl": "https://example.com/s25",
+      "profileUrl": "http://localhost:3001/photos/student(55).jpg",
       "gender": "male",
       "dateOfBirth": "2015-10-22",
       "classIds": [
@@ -1774,7 +1903,7 @@
       "firstName": "Ella",
       "address": "123 Oak St, Springfield, IL 62701",
       "email": "s26@example.com",
-      "profileUrl": "https://example.com/s26",
+      "profileUrl": "http://localhost:3001/photos/student(56).jpg",
       "gender": "female",
       "dateOfBirth": "2008-12-18",
       "classIds": [
@@ -1792,7 +1921,7 @@
       "firstName": "Ryan",
       "address": "124 Spruce St, Springfield, IL 62701",
       "email": "s27@example.com",
-      "profileUrl": "https://example.com/s27",
+      "profileUrl": "http://localhost:3001/photos/student(57).jpg",
       "gender": "male",
       "dateOfBirth": "2013-01-08",
       "classIds": [
@@ -1812,7 +1941,7 @@
       "firstName": "Natalie",
       "address": "125 Chestnut St, Springfield, IL 62701",
       "email": "s28@example.com",
-      "profileUrl": "https://example.com/s28",
+      "profileUrl": "http://localhost:3001/photos/student(58).jpg",
       "gender": "female",
       "dateOfBirth": "2011-02-05",
       "classIds": [
@@ -1830,16 +1959,13 @@
       "firstName": "Christopher",
       "address": "126 Poplar St, Springfield, IL 62701",
       "email": "s29@example.com",
-      "profileUrl": "https://example.com/s29",
+      "profileUrl": "http://localhost:3001/photos/student(59).jpg",
       "gender": "male",
       "dateOfBirth": "2009-09-25",
       "classIds": [
         "c18"
       ],
-      "parentIds": [
-        "p43",
-        "p44"
-      ],
+      "parentIds": [],
       "admissionDate": "2015-03-10",
       "phone": "217-555-9013"
     },
@@ -1849,7 +1975,7 @@
       "firstName": "Samantha",
       "address": "127 Sycamore St, Springfield, IL 62701",
       "email": "s30@example.com",
-      "profileUrl": "https://example.com/s30",
+      "profileUrl": "http://localhost:3001/photos/student(60).jpg",
       "gender": "female",
       "dateOfBirth": "2010-11-19",
       "classIds": [
@@ -1861,19 +1987,81 @@
       "admissionDate": "2016-08-27",
       "phone": "217-555-1237"
     },
-    "s1729662648499": {
-      "id": "s1729662648499",
-      "lastName": "",
-      "firstName": "",
-      "address": "",
-      "email": "",
-      "profileUrl": "",
-      "gender": "",
-      "dateOfBirth": "",
-      "classIds": [],
-      "parentIds": [],
-      "admissionDate": "",
-      "phone": ""
+    "s1733198793374": {
+      "id": "s1733198793374",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "171 đường số 6, P. Bình Trị Đông B, Q. Bình Tân",
+      "email": "taynguyen3110@gmail.com",
+      "profileUrl": "http://localhost:3001/photos/s1733271019440.jpeg",
+      "gender": "female",
+      "dateOfBirth": "2018-10-31T13:00:00.000Z",
+      "classIds": [
+        "c1"
+      ],
+      "parentIds": [
+        "p2"
+      ],
+      "admissionDate": "2024-12-12T13:00:00.000Z",
+      "phone": "0906939189"
+    },
+    "s1733205738238": {
+      "id": "s1733205738238",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "171 đường số 6, P. Bình Trị Đông B, Q. Bình Tân",
+      "email": "taynguyen3110@gmail.com",
+      "profileUrl": "http://localhost:3001/photos/s1733205716304.jpeg",
+      "gender": "male",
+      "dateOfBirth": "2018-09-12T14:00:00.000Z",
+      "classIds": [
+        "c1",
+        "c3"
+      ],
+      "parentIds": [
+        "p9",
+        "p35"
+      ],
+      "admissionDate": "2024-12-18T13:00:00.000Z",
+      "phone": "0906939189"
+    },
+    "s1733368983429": {
+      "id": "s1733368983429",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "1",
+      "email": "taynguyen3110@gmail.com",
+      "profileUrl": "http://localhost:3001/photos/s1733368982086.jpeg",
+      "gender": "male",
+      "dateOfBirth": "2013-12-31T13:00:00.000Z",
+      "classIds": [
+        "c3",
+        "c4"
+      ],
+      "parentIds": [
+        "p5",
+        "p6"
+      ],
+      "admissionDate": "2024-12-19T13:00:00.000Z",
+      "phone": "0906939189"
+    },
+    "s1733792523876": {
+      "id": "s1733792523876",
+      "lastName": "Tây",
+      "firstName": "Nguyễn",
+      "address": "4",
+      "email": "taynguyen3110@gmail.com",
+      "profileUrl": "http://localhost:3001/photos/profile-picture.jpg",
+      "gender": "male",
+      "dateOfBirth": "2014-01-08T13:00:00.000Z",
+      "classIds": [
+        "c2"
+      ],
+      "parentIds": [
+        "p2"
+      ],
+      "admissionDate": "2024-12-13T13:00:00.000Z",
+      "phone": "0906939189"
     }
   }
 }

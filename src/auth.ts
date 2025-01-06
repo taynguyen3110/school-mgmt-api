@@ -2,7 +2,7 @@ import { CreateServerOptions, getAuthStatus, getRequestBody, HttpCallAuthenticat
 import { generateAuthTokens } from "@jasonai/api/lib/server/utils/auth";
 import z from "zod";
 import { user_by_id, user_login, user_update } from "./services";
-import { UserUpdateData, UserUpdateDataSchema } from "./types";
+import { UserUpdateData, UserUpdateDataSchema, UserUpdatePasswordData, UserUpdatePasswordSchema } from "./types";
 
 export const authController: CreateServerOptions['beforeRoute'] = (app) => {
     app.get('/', (req, res) => {
@@ -48,9 +48,9 @@ export const authController: CreateServerOptions['beforeRoute'] = (app) => {
 
         res.json(data);
     });
-    app.post('/api/account/change-password', HttpCallAuthentication().middleware(), HttpCallValidation(UserUpdateDataSchema).middleware('body'), (req, res) => {
+    app.post('/api/account/change-password', HttpCallAuthentication().middleware(), HttpCallValidation(UserUpdatePasswordSchema).middleware('body'), (req, res) => {
         const auth = getAuthStatus();
-        const data = getRequestBody() as UserUpdateData;
+        const data = getRequestBody() as UserUpdatePasswordData;
         const record = user_by_id(auth.user?.id || '');
 
         if (!record) {
@@ -62,6 +62,6 @@ export const authController: CreateServerOptions['beforeRoute'] = (app) => {
 
         const user = user_update({ id: auth.user?.id || '', ...data });
 
-        res.json(data);
+        res.json({ message: 'Password updated successfully' });
     });
 }

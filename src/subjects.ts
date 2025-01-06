@@ -13,8 +13,8 @@ export const subjectController: CreateServerOptions['beforeRoute'] = (app) => {
     });
     app.get('/api/subjects/', HttpCallAuthentication().middleware(), HttpCallValidation(subjectsQuerySchema).middleware('query'), (req, res) => {
         // get subjects
-        const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as SubjectsQuery;
-        const list = subject_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order });
+        const { name, classIds, schedule, page, sortBy, order } = (getRequestQuery() || {}) as SubjectsQuery;
+        const list = subject_filter({ name, classIds: (classIds?.split(',') || []), schedule, page: parseInt(page || '1'), sortBy: sortBy as any, order });
         res.json(list);
         res.status(200);
     });
@@ -60,6 +60,7 @@ export const subjectController: CreateServerOptions['beforeRoute'] = (app) => {
 const subjectsQuerySchema = z.object({
     name: z.string().optional(),
     classIds: z.string().optional(),
+    schedule: z.string().optional(),
     page: z.string().optional(),
     sortBy: z.string().optional(),
     order: z.enum(['asc', 'desc']).optional(),

@@ -12,11 +12,19 @@ import { mediaController } from './media';
 import express from 'express';
 import * as fs from 'fs';
 import * as path from 'path';
+import cors from 'cors';
+import { statsController } from './stats';
 
 config();
 
 const server = createServer({
     calls, beforeRoute: (app) => {
+        app.use((req, res, next) => {
+            res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+            res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+            next();
+        });
+
         // set static folder for photos
         app.use('/photos', express.static(path.join(__dirname, '../public/photos')));
         authController!(app);
@@ -26,10 +34,11 @@ const server = createServer({
         subjectController!(app);
         classController!(app);
         mediaController!(app);
+        statsController!(app);
     },
     callsEndpoint: '/api',
     auth: {
-        jwtExpirationMinutes: 60,
+        jwtExpirationMinutes: 60 * 24 * 30,
         jwtSecret: 'random_sfsfe_3243',
         jwtRefreshTokenExpirationMinutes: 60 * 24 * 30,
         roleRights: new Map(),

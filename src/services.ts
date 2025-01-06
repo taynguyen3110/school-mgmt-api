@@ -26,7 +26,8 @@ export const user_add = (user: any) => {
 }
 
 export const user_update = (user: any) => {
-    dbInstance.db.users[user.id] = user;
+    const existingUser = dbInstance.db.users[user.id];
+    dbInstance.db.users[user.id] = {...existingUser, ...user};
     dbInstance.write();
 }
 
@@ -128,8 +129,8 @@ const subjectsFull = (subjects: Subject[]): SubjectFull[] => {
     });
 }
 
-export const subject_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Subject, order?: 'asc' | 'desc' }, all = false) => {
-    const { name, classIds, order, page, sortBy } = filter;
+export const subject_filter = (filter: { name?: string, classIds?: string[], schedule?: string, page?: number, sortBy?: keyof Subject, order?: 'asc' | 'desc' }, all = false) => {
+    const { name, classIds, schedule, order, page, sortBy } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
     const _order = order || 'asc';
@@ -142,6 +143,9 @@ export const subject_filter = (filter: { name?: string, classIds?: string[], pag
     }
     if (classIds && classIds.length) {
         result = result.filter((subject) => classIds.includes(subject.classId));
+    }
+    if (schedule) {
+        result = result.filter((subject) => subject.daysOfWeek.includes(schedule.toLowerCase()));
     }
     if (sortBy) {
         result = result.sort((a, b) => {
@@ -433,4 +437,38 @@ export const student_update = (student: Student) => {
     dbInstance.db.students[student.id] = student;
     dbInstance.write();
     return studentsFull([dbInstance.db.students[student.id]])[0];
+}
+
+export const db_stats = () => {
+    const students = Object.values(dbInstance.db.students);
+    const studentCount = students.length;
+    const maleCount = students.filter(student => student.gender === 'male').length;
+    const femaleCount = students.filter(student => student.gender === 'female').length;
+
+    const parentCount = Object.keys(dbInstance.db.parents).length;
+    const teacherCount = Object.keys(dbInstance.db.teachers).length;
+    const classCount = Object.keys(dbInstance.db.classes).length;
+
+    // Calculate student enrollments per year
+    const enrollmentsPerYear: { [year: string]: number } = {};
+    students.forEach(student => {
+        const year = new Date(student.admissionDate).getFullYear().toString();
+        if (!enrollmentsPerYear[year]) {
+            enrollmentsPerYear[year] = 0;
+        }
+        enrollmentsPerYear[year]++;
+    });
+
+    // Convert the enrollmentsPerYear object to the desired format
+    const enrollmentsArray = Object.entries(enrollmentsPerYear).map(([year, count]) => [year, count]);
+
+    return {
+        studentCount,
+        maleCount,
+        femaleCount,
+        parentCount,
+        teacherCount,
+        classCount,
+        enrollmentsPerYear: enrollmentsArray
+    };
 }

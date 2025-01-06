@@ -29,7 +29,7 @@ export const studentController: CreateServerOptions['beforeRoute'] = (app) => {
         // get students
         const { id } = (getRequestParams() || {}) as StudentParams;
         student_delete(id);
-        res.status(200);
+        res.status(200).end();
     });
     app.post('/api/students/add', HttpCallAuthentication().middleware(), HttpCallValidation(StudentUpdateDataSchema).middleware('body'), (req, res) => {
         const data = getRequestBody() as StudentUpdateData;

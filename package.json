@@ -14,6 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/node-lts": "^18.12.5",
+    "@types/cors": "^2.8.17",
     "@types/eventsource": "^1.1.12",
     "@types/node": "^20.8.3",
     "ts-node": "^10.9.1",
@@ -27,6 +28,7 @@
     "@google-cloud/text-to-speech": "^5.0.1",
     "@jasonai/api": "^0.0.9",
     "axios": "^1.5.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eventsource": "^2.0.2",
     "express": "^4.21.0",
