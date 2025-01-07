@@ -18,3 +18,5 @@
    ```sh
    npm run dev
    ```
+
+The server will run on port 3001
