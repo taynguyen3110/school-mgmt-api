@@ -21,7 +21,7 @@ const server = createServer({
     calls, beforeRoute: (app) => {
         // Add CORS middleware
         app.use(cors({
-            origin: ['http://localhost:4200', 'https://school-mgmt-web.vercel.app'],
+            origin: ['http://localhost:4200', 'https://school-management-puce-five.vercel.app/'],
             credentials: true
         }));
 
