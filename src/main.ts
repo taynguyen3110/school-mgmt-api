@@ -19,6 +19,12 @@ config();
 
 const server = createServer({
     calls, beforeRoute: (app) => {
+        // Add CORS middleware
+        app.use(cors({
+            origin: ['http://localhost:4200', 'https://school-mgmt-web.vercel.app'],
+            credentials: true
+        }));
+
         app.use((req, res, next) => {
             res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
             res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
