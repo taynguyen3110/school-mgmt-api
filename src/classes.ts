@@ -4,52 +4,52 @@ import z from "zod";
 import { ClassUpdateData, ClassUpdateDataSchema } from "./types";
 
 export const classController: CreateServerOptions['beforeRoute'] = (app) => {
-    app.get('/api/classes/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(classsQuerySchema).middleware('query'), (req, res) => {
+    app.get('/api/classes/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(classsQuerySchema).middleware('query'), async (req, res) => {
         // get classs
         const { name, page, sortBy, order } = (getRequestQuery() || {}) as ClasssQuery;
-        const list = class_filter({ name, page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
+        const list = await class_filter({ name, page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
         res.json(list);
         res.status(200);
     });
-    app.get('/api/classes/', HttpCallAuthentication().middleware(), HttpCallValidation(classsQuerySchema).middleware('query'), (req, res) => {
+    app.get('/api/classes/', HttpCallAuthentication().middleware(), HttpCallValidation(classsQuerySchema).middleware('query'), async (req, res) => {
         // get classs
         const { name, page, sortBy, order } = (getRequestQuery() || {}) as ClasssQuery;
-        const list = class_filter({ name, page: parseInt(page || '1'), sortBy: sortBy as any, order });
+        const list = await class_filter({ name, page: parseInt(page || '1'), sortBy: sortBy as any, order });
         res.json(list);
         res.status(200);
     });
-    app.get('/api/classes/:id', HttpCallAuthentication().middleware(), HttpCallValidation(classsParamsSchema).middleware('params'), (req, res) => {
+    app.get('/api/classes/:id', HttpCallAuthentication().middleware(), HttpCallValidation(classsParamsSchema).middleware('params'), async (req, res) => {
         // get classs
         const { id } = (getRequestParams() || {}) as ClasssParams;
-        const classData = class_by_id(id);
+        const classData = await class_by_id(id);
         res.json(classData);
         res.status(200);
     });
-    app.delete('/api/classes/:id', HttpCallAuthentication().middleware(), HttpCallValidation(classsParamsSchema).middleware('params'), (req, res) => {
+    app.delete('/api/classes/:id', HttpCallAuthentication().middleware(), HttpCallValidation(classsParamsSchema).middleware('params'), async (req, res) => {
         // get classs
         const { id } = (getRequestParams() || {}) as ClasssParams;
-        class_delete(id);
+        await class_delete(id);
         res.status(200).end();
     });
-    app.post('/api/classes/add', HttpCallAuthentication().middleware(), HttpCallValidation(ClassUpdateDataSchema).middleware('body'), (req, res) => {
+    app.post('/api/classes/add', HttpCallAuthentication().middleware(), HttpCallValidation(ClassUpdateDataSchema).middleware('body'), async (req, res) => {
         const data = getRequestBody() as ClassUpdateData;
         // add class
-        const classData = class_add({ id: 's' + Date.now(), ...data });
+        const classData = await class_add({ id: 's' + Date.now(), ...data });
         res.json(classData);
         res.status(200);
     });
-    app.post('/api/classes/:id', HttpCallAuthentication().middleware(), HttpCallValidation(ClassUpdateDataSchema).middleware('body'), HttpCallValidation(classsParamsSchema).middleware('params'), (req, res) => {
+    app.post('/api/classes/:id', HttpCallAuthentication().middleware(), HttpCallValidation(ClassUpdateDataSchema).middleware('body'), HttpCallValidation(classsParamsSchema).middleware('params'), async (req, res) => {
         const { id } = (getRequestParams() || {}) as ClasssParams;
         const data = getRequestBody() as ClassUpdateData;
         // update class
-        const record = class_by_id(id);
+        const record = await class_by_id(id);
         if (!record) {
             return res.status(404).json({
                 code: 404,
                 message: 'Not found'
             });
         }
-        const classData = class_update({ id, ...data });
+        const classData = await class_update({ id, ...data });
         res.json(classData);
         res.status(200);
     });

@@ -1,21 +1,44 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { Db } from './types';
+import { MongoClient, Db } from 'mongodb';
+import dotenv from 'dotenv';
 
-export class db {
-    public db!: Db;
+dotenv.config();
 
-    constructor() {
-        this.read();
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://your-connection-string';
+
+class MongoDB {
+    private static instance: MongoDB;
+    private client: MongoClient | null = null;
+    private _db: Db | null = null;
+
+    private constructor() {}
+
+    public static getInstance(): MongoDB {
+        if (!MongoDB.instance) {
+            MongoDB.instance = new MongoDB();
+        }
+        return MongoDB.instance;
     }
 
-    read() {
-        this.db = JSON.parse(fs.readFileSync(path.join(__dirname, '../db.json'), 'utf-8'));
+    public async connect() {
+        if (!this.client) {
+            this.client = new MongoClient(MONGODB_URI);
+            await this.client.connect();
+            this._db = this.client.db('school-management');
+        }
+        return this._db;
     }
 
-    write() {
-        fs.writeFileSync(path.join(__dirname, '../db.json'), JSON.stringify(this.db, null, 2));
+    public async disconnect() {
+        if (this.client) {
+            await this.client.close();
+            this.client = null;
+            this._db = null;
+        }
+    }
+
+    public get db(): Db | null {
+        return this._db;
     }
 }
 
-export const dbInstance = new db();
+export const dbInstance = MongoDB.getInstance();

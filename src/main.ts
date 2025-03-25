@@ -43,7 +43,8 @@ const server = createServer({
         jwtRefreshTokenExpirationMinutes: 60 * 24 * 30,
         roleRights: new Map(),
         getUser: async (id) => {
-            return user_by_id(id);
+            const user = await user_by_id(id);
+            return user || undefined;
         }
     }
 });

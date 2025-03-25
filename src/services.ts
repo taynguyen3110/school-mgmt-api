@@ -1,11 +1,15 @@
+import { AuthUserModel } from "@jasonai/api/lib/server/types";
 import { dbInstance } from "./db";
-import { ClassType, ClassTypeFull, Parent, StudenFull, Student, Subject, SubjectFull, Teacher } from "./types";
+import { ClassType, ClassTypeFull, Parent, StudenFull, Student, Subject, SubjectFull, Teacher, User } from "./types";
+import { Auth, Document, WithId } from 'mongodb';
 
 // ## User
-export const user_login = (username: string, password: string) => {
-    const list = dbInstance.db.users;
-    const arr = Object.values(list);
-    const result = arr.find((user) => user.email === username && user.password === password);
+export const user_login = async (username: string, password: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const users = db.collection('users');
+    const result = await users.findOne({ email: username, password: password });
     return result;
 }
 
@@ -16,68 +20,96 @@ export const user_login = (username: string, password: string) => {
 //     return result;
 // }
 
-export const user_by_id = (id: string) => {
-    return dbInstance.db.users[id];
+export const user_by_id = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const users = db.collection('users');
+    return await users.findOne<AuthUserModel | Promise<AuthUserModel | undefined> | undefined>({ id: id });
 }
 
-export const user_add = (user: any) => {
-    dbInstance.db.users[user.id] = user;
-    dbInstance.write();
+export const user_add = async (user: User) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const users = db.collection('users');
+    await users.insertOne(user);
 }
 
-export const user_update = (user: any) => {
-    const existingUser = dbInstance.db.users[user.id];
-    dbInstance.db.users[user.id] = {...existingUser, ...user};
-    dbInstance.write();
+export const user_update = async (user: User) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const users = db.collection('users');
+    await users.updateOne(
+        { id: user.id },
+        { $set: user }
+    );
 }
 
 // ## Class
-const classesFull = (classes: ClassType[]): ClassTypeFull[] => {
-    const students = dbInstance.db.students;
-    return classes.map((classs) => {
-        return {
-            ...classs,
-            students: classs.studentIds.map((studentId) => students[studentId]),
-        }
-    });
+const classesFull = async (classes: ClassType[]): Promise<ClassTypeFull[]> => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    const studentsData = await students.find({}).toArray();
+    const studentsMap = new Map(
+        studentsData
+            .map(s => [s.id, s as unknown as Student])
+    );
+
+    return classes.map((classs) => ({
+        ...classs,
+        students: classs.studentIds
+            .map((studentId) => studentsMap.get(studentId))
+            .filter((student): student is Student => student !== undefined),
+    }));
 }
 
-export const class_list = (page = 1, rowsPerPage = 10) => {
-    const list = dbInstance.db.classes;
-    const arr = Object.values(list);
-    const result = arr.slice((page - 1) * rowsPerPage, page * rowsPerPage);
-    return result;
+export const class_list = async (page = 1, rowsPerPage = 10) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const classes = db.collection('classes');
+    const result = await classes.find({})
+        .skip((page - 1) * rowsPerPage)
+        .limit(rowsPerPage)
+        .toArray();
+    return result.map(doc => doc as unknown as ClassType);
 }
-export const class_filter = (filter: { name?: string, page?: number, sortBy?: keyof ClassType, order?: 'asc' | 'desc' }, all = false) => {
+
+export const class_filter = async (filter: { name?: string, page?: number, sortBy?: keyof ClassType, order?: 'asc' | 'desc' }, all = false) => {
     const { name, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
     const _order = order || 'asc';
-    const list = dbInstance.db.classes;
-    const arr = Object.values(list);
-    let result = arr;
+
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const classes = db.collection('classes');
+    let query = classes.find({});
+
     if (name) {
-        const nameLower = name.toLowerCase();
-        result = result.filter((c) => c.name.toLowerCase().includes(nameLower));
-    }
-    if (sortBy) {
-        result = result.sort((a, b) => {
-            if (a[sortBy] < b[sortBy]) return -1;
-            if (a[sortBy] > b[sortBy]) return 1;
-            return 0;
-        });
-        // order
-        if (_order === 'desc') {
-            result = result.reverse();
-        }
-    }
-    const totalResult = result.length;
-    if (_page && !all) {
-        result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
+        query = query.filter({ name: { $regex: name, $options: 'i' } });
     }
 
+    if (sortBy) {
+        query = query.sort({ [sortBy]: _order === 'desc' ? -1 : 1 });
+    }
+
+    const totalResult = await classes.countDocuments();
+    
+    if (!all) {
+        query = query.skip((_page - 1) * rowsPerPage).limit(rowsPerPage);
+    }
+
+    const result = await query.toArray();
+    const typedResult = result.map(doc => doc as unknown as ClassType);
+
     return {
-        classes: result,
+        classes: typedResult,
         total: totalResult,
         rowsPerPage,
         page: _page,
@@ -86,28 +118,44 @@ export const class_filter = (filter: { name?: string, page?: number, sortBy?: ke
     };
 }
 
-export const class_by_id = (id: string) => {
-    if (!dbInstance.db.classes[id]) return undefined;
+export const class_by_id = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const classes = db.collection('classes');
+    const classData = await classes.findOne({ id: id });
+    if (!classData) return undefined;
 
-    return classesFull([dbInstance.db.classes[id]])[0];
+    return (await classesFull([{id: classData._id.toString(), name: classData.name as string, studentIds: classData.studentIds as string[]}]))[0];
 }
 
-export const class_add = (classs: ClassType) => {
-    dbInstance.db.classes[classs.id] = classs;
-    dbInstance.write();
-    return dbInstance.db.classes[classs.id];
+export const class_add = async (classs: ClassType) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const classes = db.collection('classes');
+    await classes.insertOne(classs);
+    return classs;
 }
 
-export const class_update = (classs: ClassType) => {
-    dbInstance.db.classes[classs.id] = classs;
-    dbInstance.write();
-    return dbInstance.db.classes[classs.id];
+export const class_update = async (classs: ClassType) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const classes = db.collection('classes');
+    await classes.updateOne(
+        { id: classs.id },
+        { $set: classs }
+    );
+    return classs;
 }
 
-export const class_delete = (id: string) => {
-    delete dbInstance.db.classes[id];
-    dbInstance.write();
-    return dbInstance.db.classes[id];
+export const class_delete = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const classes = db.collection('classes');
+    await classes.deleteOne({ id: id });
 }
 
 // ## Subject
@@ -118,53 +166,75 @@ export const class_delete = (id: string) => {
 //     return result;
 // }
 
-const subjectsFull = (subjects: Subject[]): SubjectFull[] => {
-    const teachers = dbInstance.db.teachers;
+const subjectsFull = async (subjects: Subject[]): Promise<SubjectFull[]> => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const teachers = db.collection('teachers');
+    const classes = db.collection('classes');
+    
+    const teacherData = await teachers.find({}).toArray();
+    const classData = await classes.find({}).toArray();
+    
+    const teachersMap = new Map(teacherData.map(t => [t.id, t as unknown as Teacher]));
+    const classesMap = new Map(classData.map(c => [c.id, c as unknown as ClassType]));
+
     return subjects.map((subject) => {
+        const teacher = teachersMap.get(subject.teacherId);
+        const classData = classesMap.get(subject.classId);
+        
+        if (!teacher || !classData) {
+            throw new Error(`Missing teacher or class data for subject ${subject.id}`);
+        }
+
         return {
             ...subject,
-            teacher: teachers[subject.teacherId],
-            class: dbInstance.db.classes[subject.classId]
-        }
+            teacher,
+            class: classData
+        };
     });
 }
 
-export const subject_filter = (filter: { name?: string, classIds?: string[], schedule?: string, page?: number, sortBy?: keyof Subject, order?: 'asc' | 'desc' }, all = false) => {
+export const subject_filter = async (filter: { name?: string, classIds?: string[], schedule?: string, page?: number, sortBy?: keyof Subject, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, schedule, order, page, sortBy } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
     const _order = order || 'asc';
-    const list = dbInstance.db.subjects;
-    const arr = Object.values(list);
-    let result = arr;
+
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const subjects = db.collection('subjects');
+    let query = subjects.find({});
+
     if (name) {
-        const nameLower = name.toLowerCase();
-        result = result.filter((subject) => subject.name.toLowerCase().includes(nameLower));
-    }
-    if (classIds && classIds.length) {
-        result = result.filter((subject) => classIds.includes(subject.classId));
-    }
-    if (schedule) {
-        result = result.filter((subject) => subject.daysOfWeek.includes(schedule.toLowerCase()));
-    }
-    if (sortBy) {
-        result = result.sort((a, b) => {
-            if (a[sortBy] < b[sortBy]) return -1;
-            if (a[sortBy] > b[sortBy]) return 1;
-            return 0;
-        });
-        // order
-        if (_order === 'desc') {
-            result = result.reverse();
-        }
+        query = query.filter({ name: { $regex: name, $options: 'i' } });
     }
 
-    const totalResult = result.length;
-    if (_page && !all) {
-        result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
+    if (classIds && classIds.length) {
+        query = query.filter({ classId: { $in: classIds } });
     }
+
+    if (schedule) {
+        query = query.filter({ daysOfWeek: schedule.toLowerCase() });
+    }
+
+    if (sortBy) {
+        query = query.sort({ [sortBy]: _order === 'desc' ? -1 : 1 });
+    }
+
+    const totalResult = await subjects.countDocuments();
+    
+    if (!all) {
+        query = query.skip((_page - 1) * rowsPerPage).limit(rowsPerPage);
+    }
+
+    const result = await query.toArray();
+    const typedResult = result.map(doc => doc as unknown as Subject);
+    const subjectsWithDetails = await subjectsFull(typedResult);
+
     return {
-        subjects: subjectsFull(result),
+        subjects: subjectsWithDetails,
         total: totalResult,
         rowsPerPage,
         page: _page,
@@ -173,26 +243,46 @@ export const subject_filter = (filter: { name?: string, classIds?: string[], sch
     };
 }
 
-export const subject_by_id = (id: string) => {
-    if (!dbInstance.db.subjects[id]) return undefined;
-    return subjectsFull([dbInstance.db.subjects[id]])[0];
+export const subject_by_id = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const subjects = db.collection('subjects');
+    const subject = await subjects.findOne({ id: id });
+    if (!subject) return undefined;
+
+    return (await subjectsFull([subject as unknown as Subject]))[0];
 }
 
-export const subject_add = (subject: Subject) => {
-    dbInstance.db.subjects[subject.id] = subject;
-    dbInstance.write();
-    return subjectsFull([dbInstance.db.subjects[subject.id]])[0];
+export const subject_add = async (subject: Subject) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const subjects = db.collection('subjects');
+    await subjects.insertOne(subject);
+    const result = await subjectsFull([subject]);
+    return result[0];
 }
 
-export const subject_update = (subject: Subject) => {
-    dbInstance.db.subjects[subject.id] = subject;
-    dbInstance.write();
-    return subjectsFull([dbInstance.db.subjects[subject.id]])[0];
+export const subject_update = async (subject: Subject) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const subjects = db.collection('subjects');
+    await subjects.updateOne(
+        { id: subject.id },
+        { $set: subject }
+    );
+    const result = await subjectsFull([subject]);
+    return result[0];
 }
 
-export const subject_delete = (id: string) => {
-    delete dbInstance.db.subjects[id];
-    dbInstance.write();
+export const subject_delete = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const subjects = db.collection('subjects');
+    await subjects.deleteOne({ id: id });
 }
 
 // ## Teacher
@@ -203,44 +293,49 @@ export const subject_delete = (id: string) => {
 //     return result;
 // }
 
-export const teacher_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Teacher, order?: 'asc' | 'desc' }, all = false) => {
+export const teacher_filter = async (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Teacher, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
     const _order = order || 'asc';
-    const list = dbInstance.db.teachers;
-    const arr = Object.values(list);
-    let result = arr;
+
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const teachers = db.collection('teachers');
+    let query = teachers.find({});
+
     if (name) {
-        const nameLower = name.toLowerCase();
-        result = result.filter((teacher) => teacher.firstName.toLowerCase().includes(nameLower)
-            || teacher.lastName.toLowerCase().includes(nameLower));
-    }
-    if (classIds && classIds.length) {
-        const subjects = dbInstance.db.subjects;
-        result = result.filter((teacher) => {
-            const subject = Object.values(subjects).find((subject) => subject.teacherId === teacher.id);
-            return subject && classIds.includes(subject.classId);
+        query = query.filter({
+            $or: [
+                { firstName: { $regex: name, $options: 'i' } },
+                { lastName: { $regex: name, $options: 'i' } }
+            ]
         });
-    }
-    if (sortBy) {
-        result = result.sort((a, b) => {
-            if (a[sortBy] < b[sortBy]) return -1;
-            if (a[sortBy] > b[sortBy]) return 1;
-            return 0;
-        });
-        // order
-        if (_order === 'desc') {
-            result = result.reverse();
-        }
-    }
-    const totalResult = result.length;
-    if (_page && !all) {
-        result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
     }
 
+    if (classIds && classIds.length) {
+        const subjects = db.collection('subjects');
+        const subjectData = await subjects.find({ classId: { $in: classIds } }).toArray();
+        const teacherIds = subjectData.map(subject => subject.teacherId);
+        query = query.filter({ id: { $in: teacherIds } });
+    }
+
+    if (sortBy) {
+        query = query.sort({ [sortBy]: _order === 'desc' ? -1 : 1 });
+    }
+
+    const totalResult = await teachers.countDocuments();
+    
+    if (!all) {
+        query = query.skip((_page - 1) * rowsPerPage).limit(rowsPerPage);
+    }
+
+    const result = await query.toArray();
+    const typedResult = result.map(doc => doc as unknown as Teacher);
+
     return {
-        teachers: result,
+        teachers: typedResult,
         total: totalResult,
         rowsPerPage,
         page: _page,
@@ -249,25 +344,44 @@ export const teacher_filter = (filter: { name?: string, classIds?: string[], pag
     };
 }
 
-export const teacher_by_id = (id: string) => {
-    return dbInstance.db.teachers[id];
+export const teacher_by_id = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const teachers = db.collection('teachers');
+    const teacher = await teachers.findOne({ id: id });
+    if (!teacher) return undefined;
+
+    return teacher as unknown as Teacher;
 }
 
-export const teacher_add = (teacher: Teacher) => {
-    dbInstance.db.teachers[teacher.id] = teacher;
-    dbInstance.write();
-    return dbInstance.db.teachers[teacher.id];
+export const teacher_add = async (teacher: Teacher) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const teachers = db.collection('teachers');
+    await teachers.insertOne(teacher);
+    return teacher;
 }
 
-export const teacher_update = (teacher: Teacher) => {
-    dbInstance.db.teachers[teacher.id] = teacher;
-    dbInstance.write();
-    return dbInstance.db.teachers[teacher.id];
+export const teacher_update = async (teacher: Teacher) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const teachers = db.collection('teachers');
+    await teachers.updateOne(
+        { id: teacher.id },
+        { $set: teacher }
+    );
+    return teacher;
 }
 
-export const teacher_delete = (id: string) => {
-    delete dbInstance.db.teachers[id];
-    dbInstance.write();
+export const teacher_delete = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const teachers = db.collection('teachers');
+    await teachers.deleteOne({ id: id });
 }
 
 // ## Parent
@@ -278,44 +392,49 @@ export const teacher_delete = (id: string) => {
 //     return result;
 // }
 
-export const parent_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Parent, order?: 'asc' | 'desc' }, all = false) => {
+export const parent_filter = async (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Parent, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
     const _order = order || 'asc';
-    const list = dbInstance.db.parents;
-    const arr = Object.values(list);
-    let result = arr;
+
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const parents = db.collection('parents');
+    let query = parents.find({});
+
     if (name) {
-        const nameLower = name.toLowerCase();
-        result = result.filter((parent) => parent.firstName.toLowerCase().includes(nameLower)
-            || parent.lastName.toLowerCase().includes(nameLower));
-    }
-    if (classIds && classIds.length) {
-        const students = dbInstance.db.students;
-        result = result.filter((parent) => {
-            const student = Object.values(students).find((student) => student.parentIds.includes(parent.id));
-            return student && !!student.classIds.find(classId => classIds.includes(classId));
+        query = query.filter({
+            $or: [
+                { firstName: { $regex: name, $options: 'i' } },
+                { lastName: { $regex: name, $options: 'i' } }
+            ]
         });
-    }
-    if (sortBy) {
-        result = result.sort((a, b) => {
-            if (a[sortBy] < b[sortBy]) return -1;
-            if (a[sortBy] > b[sortBy]) return 1;
-            return 0;
-        });
-        // order
-        if (_order === 'desc') {
-            result = result.reverse();
-        }
-    }
-    const totalResult = result.length;
-    if (_page && !all) {
-        result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
     }
 
+    if (classIds && classIds.length) {
+        const students = db.collection('students');
+        const studentData = await students.find({ classIds: { $in: classIds } }).toArray();
+        const parentIds = studentData.flatMap(student => student.parentIds);
+        query = query.filter({ id: { $in: parentIds } });
+    }
+
+    if (sortBy) {
+        query = query.sort({ [sortBy]: _order === 'desc' ? -1 : 1 });
+    }
+
+    const totalResult = await parents.countDocuments();
+    
+    if (!all) {
+        query = query.skip((_page - 1) * rowsPerPage).limit(rowsPerPage);
+    }
+
+    const result = await query.toArray();
+    const typedResult = result.map(doc => doc as unknown as Parent);
+
     return {
-        parents: result,
+        parents: typedResult,
         total: totalResult,
         rowsPerPage,
         page: _page,
@@ -324,25 +443,44 @@ export const parent_filter = (filter: { name?: string, classIds?: string[], page
     };
 }
 
-export const parent_by_id = (id: string) => {
-    return dbInstance.db.parents[id];
+export const parent_by_id = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const parents = db.collection('parents');
+    const parent = await parents.findOne({ id: id });
+    if (!parent) return undefined;
+
+    return parent as unknown as Parent;
 }
 
-export const parent_add = (parent: Parent) => {
-    dbInstance.db.parents[parent.id] = parent;
-    dbInstance.write();
-    return dbInstance.db.parents[parent.id];
+export const parent_add = async (parent: Parent) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const parents = db.collection('parents');
+    await parents.insertOne(parent);
+    return parent;
 }
 
-export const parent_delete = (id: string) => {
-    delete dbInstance.db.parents[id];
-    dbInstance.write();
+export const parent_delete = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const parents = db.collection('parents');
+    await parents.deleteOne({ id: id });
 }
 
-export const parent_update = (parent: Parent) => {
-    dbInstance.db.parents[parent.id] = parent;
-    dbInstance.write();
-    return dbInstance.db.parents[parent.id];
+export const parent_update = async (parent: Parent) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const parents = db.collection('parents');
+    await parents.updateOne(
+        { id: parent.id },
+        { $set: parent }
+    );
+    return parent;
 }
 
 // ## Student
@@ -354,113 +492,181 @@ export const parent_update = (parent: Parent) => {
 //     return result;
 // }
 
-const studentsFull = (students: Student[]): StudenFull[] => {
-    const parents = dbInstance.db.parents;
-    const classes = dbInstance.db.classes;
-    return students.map((student) => {
-        return {
-            ...student,
-            parents: student.parentIds.map((parentId) => parents[parentId]),
-            classes: student.classIds.map((classId) => classes[classId]),
-        }
-    });
+const studentsFull = async (students: Student[]): Promise<StudenFull[]> => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const parents = db.collection('parents');
+    const classes = db.collection('classes');
+    
+    const parentData = await parents.find({}).toArray();
+    const classData = await classes.find({}).toArray();
+    
+    const parentsMap = new Map(parentData.map(p => [p.id, p as unknown as Parent]));
+    const classesMap = new Map(classData.map(c => [c.id, c as unknown as ClassType]));
+
+    return students.map((student) => ({
+        ...student,
+        parents: student.parentIds
+            .map((parentId) => parentsMap.get(parentId))
+            .filter((parent): parent is Parent => parent !== undefined),
+        classes: student.classIds
+            .map((classId) => classesMap.get(classId))
+            .filter((classs): classs is ClassType => classs !== undefined)
+    }));
 }
 
-export const student_by_parent = (parentId: string) => {
-    const list = dbInstance.db.students;
-    const arr = Object.values(list);
-    const result = arr.filter((student) => student.parentIds.includes(parentId));
-    return studentsFull(result);
+export const student_by_parent = async (parentId: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    const result = await students.find({ parentIds: parentId }).toArray();
+    const typedResult = result.map(doc => doc as unknown as Student);
+    return await studentsFull(typedResult);
 }
 
-export const student_filter = (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Student, order?: 'asc' | 'desc' }, all = false) => {
+export const student_filter = async (filter: { name?: string, classIds?: string[], page?: number, sortBy?: keyof Student, order?: 'asc' | 'desc' }, all = false) => {
     const { name, classIds, page, sortBy, order } = filter;
     const rowsPerPage = 10;
     const _page = page || 1;
     const _order = order || 'asc';
-    const list = dbInstance.db.students;
-    const arr = Object.values(list);
-    let result = arr;
+
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    let query = students.find({});
 
     if (name) {
-        const nameLower = name.toLowerCase();
-        result = result.filter((student) => (student.firstName + student.lastName).toLowerCase().includes(nameLower));
-    }
-    if (classIds && classIds.length) {
-        result = result.filter((student) => !!student.classIds.find(classId => classIds.includes(classId)));
-    }
-    if (sortBy) {
-        result = result.sort((a, b) => {
-            if (a[sortBy] < b[sortBy]) return -1;
-            if (a[sortBy] > b[sortBy]) return 1;
-            return 0;
+        query = query.filter({
+            $or: [
+                { firstName: { $regex: name, $options: 'i' } },
+                { lastName: { $regex: name, $options: 'i' } }
+            ]
         });
-        // order
-        if (_order === 'desc') {
-            result = result.reverse();
-        }
     }
-    const totalResult = result.length;
-    if (_page && !all) {
-        result = result.slice((_page - 1) * rowsPerPage, _page * rowsPerPage);
+
+    if (classIds && classIds.length) {
+        query = query.filter({ classIds: { $in: classIds } });
     }
-    const students = studentsFull(result);
+
+    if (sortBy) {
+        query = query.sort({ [sortBy]: _order === 'desc' ? -1 : 1 });
+    }
+
+    const totalResult = await students.countDocuments();
+    
+    if (!all) {
+        query = query.skip((_page - 1) * rowsPerPage).limit(rowsPerPage);
+    }
+
+    const result = await query.toArray();
+    const typedResult = result.map(doc => doc as unknown as Student);
+    const studentsWithDetails = await studentsFull(typedResult);
 
     return {
-        students,
+        students: studentsWithDetails,
         total: totalResult,
         rowsPerPage,
         page: _page,
         totalPages: Math.ceil(totalResult / rowsPerPage),
         filter: { name, classIds, page: _page, sortBy, order: _order }
-    }
+    };
 }
 
-export const student_by_id = (id: string) => {
-    if (!dbInstance.db.students[id]) return undefined;
+export const student_by_id = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    const student = await students.findOne({ id: id });
+    if (!student) return undefined;
 
-    return studentsFull([dbInstance.db.students[id]])[0];
+    const result = await studentsFull([student as unknown as Student]);
+    return result[0];
 }
 
-export const student_add = (student: Student) => {
-    dbInstance.db.students[student.id] = student;
-    dbInstance.write();
-    return studentsFull([dbInstance.db.students[student.id]])[0];
+export const student_add = async (student: Student) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    await students.insertOne(student);
+    const result = await studentsFull([student]);
+    return result[0];
 }
 
-export const student_delete = (id: string) => {
-    delete dbInstance.db.students[id];
-    dbInstance.write();
+export const student_delete = async (id: string) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    await students.deleteOne({ id: id });
 }
 
-export const student_update = (student: Student) => {
-    dbInstance.db.students[student.id] = student;
-    dbInstance.write();
-    return studentsFull([dbInstance.db.students[student.id]])[0];
+export const student_update = async (student: Student) => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    await students.updateOne(
+        { id: student.id },
+        { $set: student }
+    );
+    const result = await studentsFull([student]);
+    return result[0];
 }
 
-export const db_stats = () => {
-    const students = Object.values(dbInstance.db.students);
-    const studentCount = students.length;
-    const maleCount = students.filter(student => student.gender === 'male').length;
-    const femaleCount = students.filter(student => student.gender === 'female').length;
+export const db_stats = async () => {
+    const db = await dbInstance.connect();
+    if (!db) throw new Error('Database connection failed');
+    
+    const students = db.collection('students');
+    const parents = db.collection('parents');
+    const teachers = db.collection('teachers');
+    const classes = db.collection('classes');
 
-    const parentCount = Object.keys(dbInstance.db.parents).length;
-    const teacherCount = Object.keys(dbInstance.db.teachers).length;
-    const classCount = Object.keys(dbInstance.db.classes).length;
+    // Get counts using MongoDB's countDocuments
+    const [studentCount, parentCount, teacherCount, classCount] = await Promise.all([
+        students.countDocuments(),
+        parents.countDocuments(),
+        teachers.countDocuments(),
+        classes.countDocuments()
+    ]);
 
-    // Calculate student enrollments per year
-    const enrollmentsPerYear: { [year: string]: number } = {};
-    students.forEach(student => {
-        const year = new Date(student.admissionDate).getFullYear().toString();
-        if (!enrollmentsPerYear[year]) {
-            enrollmentsPerYear[year] = 0;
+    // Get gender counts using MongoDB's aggregation
+    const genderStats = await students.aggregate([
+        {
+            $group: {
+                _id: '$gender',
+                count: { $sum: 1 }
+            }
         }
-        enrollmentsPerYear[year]++;
-    });
+    ]).toArray();
 
-    // Convert the enrollmentsPerYear object to the desired format
-    const enrollmentsArray = Object.entries(enrollmentsPerYear).map(([year, count]) => [year, count]);
+    const maleCount = genderStats.find(stat => stat._id === 'male')?.count || 0;
+    const femaleCount = genderStats.find(stat => stat._id === 'female')?.count || 0;
+
+    // Get enrollments per year using MongoDB's aggregation
+    const enrollmentsPerYear = await students.aggregate([
+        {
+            $group: {
+                _id: { $substr: ['$admissionDate', 0, 4] },
+                count: { $sum: 1 }
+            }
+        },
+        {
+            $project: {
+                year: '$_id',
+                count: 1,
+                _id: 0
+            }
+        },
+        {
+            $sort: { year: 1 }
+        }
+    ]).toArray();
 
     return {
         studentCount,
@@ -469,6 +675,6 @@ export const db_stats = () => {
         parentCount,
         teacherCount,
         classCount,
-        enrollmentsPerYear: enrollmentsArray
+        enrollmentsPerYear: enrollmentsPerYear.map(stat => [stat.year, stat.count])
     };
 }

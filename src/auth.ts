@@ -2,7 +2,7 @@ import { CreateServerOptions, getAuthStatus, getRequestBody, HttpCallAuthenticat
 import { generateAuthTokens } from "@jasonai/api/lib/server/utils/auth";
 import z from "zod";
 import { user_by_id, user_login, user_update } from "./services";
-import { UserUpdateData, UserUpdateDataSchema, UserUpdatePasswordData, UserUpdatePasswordSchema } from "./types";
+import { User, UserUpdateData, UserUpdateDataSchema, UserUpdatePasswordData, UserUpdatePasswordSchema } from "./types";
 
 export const authController: CreateServerOptions['beforeRoute'] = (app) => {
     app.get('/', (req, res) => {
@@ -11,9 +11,9 @@ export const authController: CreateServerOptions['beforeRoute'] = (app) => {
     });
     // login
     app.post('/api/login', HttpCallValidation(z.object({ username: z.string(), password: z.string() })).middleware('body'),
-        (req, res) => {
+        async (req, res) => {
             const data: any = getRequestBody();
-            const user = user_login(data.username, data.password);
+            const user = await user_login(data.username, data.password);
 
             if (!user) {
                 res.status(401);
@@ -32,10 +32,10 @@ export const authController: CreateServerOptions['beforeRoute'] = (app) => {
         const data = { ...auth.user, password: undefined };
         res.json(data);
     });
-    app.post('/api/account', HttpCallAuthentication().middleware(), HttpCallValidation(UserUpdateDataSchema).middleware('body'), (req, res) => {
+    app.post('/api/account', HttpCallAuthentication().middleware(), HttpCallValidation(UserUpdateDataSchema).middleware('body'), async (req, res) => {
         const auth = getAuthStatus();
         const data = getRequestBody() as UserUpdateData;
-        const record = user_by_id(auth.user?.id || '');
+        const record = await user_by_id(auth.user?.id || '') as User;
 
         if (!record) {
             return res.status(404).json({
@@ -44,14 +44,13 @@ export const authController: CreateServerOptions['beforeRoute'] = (app) => {
             });
         }
 
-        const user = user_update({ id: auth.user?.id || '', ...data });
-
+        await user_update({ ...record, ...data });
         res.json(data);
     });
-    app.post('/api/account/change-password', HttpCallAuthentication().middleware(), HttpCallValidation(UserUpdatePasswordSchema).middleware('body'), (req, res) => {
+    app.post('/api/account/change-password', HttpCallAuthentication().middleware(), HttpCallValidation(UserUpdatePasswordSchema).middleware('body'), async (req, res) => {
         const auth = getAuthStatus();
         const data = getRequestBody() as UserUpdatePasswordData;
-        const record = user_by_id(auth.user?.id || '');
+        const record = await user_by_id(auth.user?.id || '') as User;
 
         if (!record) {
             return res.status(404).json({
@@ -60,8 +59,7 @@ export const authController: CreateServerOptions['beforeRoute'] = (app) => {
             });
         }
 
-        const user = user_update({ id: auth.user?.id || '', ...data });
-
+        await user_update({ ...record, password: data.password });
         res.json({ message: 'Password updated successfully' });
     });
 }

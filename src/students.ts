@@ -4,59 +4,59 @@ import z from "zod";
 import { StudentUpdateData, StudentUpdateDataSchema } from "./types";
 
 export const studentController: CreateServerOptions['beforeRoute'] = (app) => {
-    app.get('/api/students/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(studentsQuerySchema).middleware('query'), (req, res) => {
+    app.get('/api/students/lookup', HttpCallAuthentication().middleware(), HttpCallValidation(studentsQuerySchema).middleware('query'), async (req, res) => {
         // get students
         const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as StudentQuery;
-        const list = student_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
+        const list = await student_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order }, true);
         res.json(list);
         res.status(200);
     });
-    app.get('/api/students/', HttpCallAuthentication().middleware(), HttpCallValidation(studentsQuerySchema).middleware('query'), (req, res) => {
+    app.get('/api/students/', HttpCallAuthentication().middleware(), HttpCallValidation(studentsQuerySchema).middleware('query'), async (req, res) => {
         // get students
         const { name, classIds, page, sortBy, order } = (getRequestQuery() || {}) as StudentQuery;
-        const list = student_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order });
+        const list = await student_filter({ name, classIds: (classIds?.split(',') || []), page: parseInt(page || '1'), sortBy: sortBy as any, order });
         res.json(list);
         res.status(200);
     });
-    app.get('/api/students/:id', HttpCallAuthentication().middleware(), HttpCallValidation(studentsParamsSchema).middleware('params'), (req, res) => {
+    app.get('/api/students/:id', HttpCallAuthentication().middleware(), HttpCallValidation(studentsParamsSchema).middleware('params'), async (req, res) => {
         // get students
         const { id } = (getRequestParams() || {}) as StudentParams;
-        const student = student_by_id(id);
+        const student = await student_by_id(id);
         res.json(student);
         res.status(200);
     });
-    app.delete('/api/students/:id', HttpCallAuthentication().middleware(), HttpCallValidation(studentsParamsSchema).middleware('params'), (req, res) => {
+    app.delete('/api/students/:id', HttpCallAuthentication().middleware(), HttpCallValidation(studentsParamsSchema).middleware('params'), async (req, res) => {
         // get students
         const { id } = (getRequestParams() || {}) as StudentParams;
-        student_delete(id);
+        await student_delete(id);
         res.status(200).end();
     });
-    app.post('/api/students/add', HttpCallAuthentication().middleware(), HttpCallValidation(StudentUpdateDataSchema).middleware('body'), (req, res) => {
+    app.post('/api/students/add', HttpCallAuthentication().middleware(), HttpCallValidation(StudentUpdateDataSchema).middleware('body'), async (req, res) => {
         const data = getRequestBody() as StudentUpdateData;
         // add student
-        const student = student_add({ id: 's' + Date.now(), ...data });
+        const student = await student_add({ id: 's' + Date.now(), ...data });
         res.json(student);
         res.status(200);
     });
-    app.post('/api/students/:id', HttpCallAuthentication().middleware(), HttpCallValidation(StudentUpdateDataSchema).middleware('body'), HttpCallValidation(studentsParamsSchema).middleware('params'), (req, res) => {
+    app.post('/api/students/:id', HttpCallAuthentication().middleware(), HttpCallValidation(StudentUpdateDataSchema).middleware('body'), HttpCallValidation(studentsParamsSchema).middleware('params'), async (req, res) => {
         const { id } = (getRequestParams() || {}) as StudentParams;
         const data = getRequestBody() as StudentUpdateData;
         // update student
-        const record = student_by_id(id);
+        const record = await student_by_id(id);
         if (!record) {
             return res.status(404).json({
                 code: 404,
                 message: 'Not found'
             });
         }
-        const student = student_update({ id, ...data });
+        const student = await student_update({ id, ...data });
         res.json(student);
         res.status(200);
     });
-    app.get('/api/students/by-parent/:id', HttpCallAuthentication().middleware(), HttpCallValidation(studentsParamsSchema).middleware('params'), (req, res) => {
+    app.get('/api/students/by-parent/:id', HttpCallAuthentication().middleware(), HttpCallValidation(studentsParamsSchema).middleware('params'), async (req, res) => {
         // get students
         const { id } = (getRequestParams() || {}) as StudentParams;
-        const students = student_by_parent(id);
+        const students = await student_by_parent(id);
         res.json(students);
         res.status(200);
     });
