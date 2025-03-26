@@ -26,7 +26,16 @@ class MongoDB {
         try {
             if (!this.client) {
                 console.log('Connecting to MongoDB...');
-                this.client = new MongoClient(MONGODB_URI as string);
+                this.client = new MongoClient(MONGODB_URI as string, {
+                    ssl: true,
+                    tls: true,
+                    tlsAllowInvalidCertificates: true,
+                    tlsAllowInvalidHostnames: true,
+                    retryWrites: true,
+                    w: 'majority',
+                    serverSelectionTimeoutMS: 5000,
+                    connectTimeoutMS: 10000,
+                });
                 await this.client.connect();
                 console.log('Connected to MongoDB successfully');
                 this._db = this.client.db('school-management');
