@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://your-connection-string';
+const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+    throw new Error('MONGODB_URI is not defined in environment variables');
+}
 
 class MongoDB {
     private static instance: MongoDB;
@@ -20,12 +23,19 @@ class MongoDB {
     }
 
     public async connect() {
-        if (!this.client) {
-            this.client = new MongoClient(MONGODB_URI);
-            await this.client.connect();
-            this._db = this.client.db('school-management');
+        try {
+            if (!this.client) {
+                console.log('Connecting to MongoDB...');
+                this.client = new MongoClient(MONGODB_URI as string);
+                await this.client.connect();
+                console.log('Connected to MongoDB successfully');
+                this._db = this.client.db('school-management');
+            }
+            return this._db;
+        } catch (error) {
+            console.error('MongoDB connection error:', error);
+            throw error;
         }
-        return this._db;
     }
 
     public async disconnect() {
